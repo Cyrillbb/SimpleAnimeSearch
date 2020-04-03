@@ -1,7 +1,12 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { getMore } from '../../actions/actions'
+import { useState } from 'react'
+import { queryParts } from './../../constants';
 
 function AnimeList(props) {
+    const [offset, setOffset] = useState(10)
+
     return (
         <div>
             {props.results.map((item) =>
@@ -30,14 +35,28 @@ function AnimeList(props) {
                     </p>
                 </div>
             )}
+            <button onClick={
+                () => {
+                    setOffset(offset + 10);                   
+                    props.getMoreRes(props.url, offset);
+                }
+            }>
+                Show More</button>
         </div>
     )
 }
 
 const mapStateToProps = (state) => {
     return {
-        results: [...state.results]
+        results: [...state.results.loadedData],
+        url: state.results.url
     }
 }
 
-export default connect(mapStateToProps, null)(AnimeList)
+const mapDispatchToProps = dispatch => {
+    return {
+        getMoreRes: (url, offset) => dispatch(getMore(url, offset))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(AnimeList)

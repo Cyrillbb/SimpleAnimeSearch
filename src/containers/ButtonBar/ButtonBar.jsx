@@ -12,11 +12,11 @@ function ButtonBar(props) {
     )
 }
 
-const mapDispatchToProps = dipsatch => {
+const mapDispatchToProps = dispatch => {
     return {
-        getPop: () => dipsatch(getMostPop()),
-        getTop: () => dipsatch(getTopRate()),
-        getAir: () => dipsatch(getTopAir())
+        getPop: () => dispatch(getMostPop()),
+        getTop: () => dispatch(getTopRate()),
+        getAir: () => dispatch(getTopAir())
     }
 }
 
