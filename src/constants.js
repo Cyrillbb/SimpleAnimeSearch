@@ -10,6 +10,7 @@ export const queryParts = {
     categories: 'https://kitsu.io/api/edge/categories?sort=-totalMediaCount&page[limit]=60&page[offset]=0',
     filter: '&fields[anime]=id,posterImage,titles,canonicalTitle,averageRating,popularityRank,ageRating,episodeCount,status,synopsis',
     categSearch: 'filter[categories]=',    
+    idFilter: 'https://kitsu.io/api/edge/anime?&filter[id]='
 }
 
 export const apiEND = queryParts.pageLim + queryParts.resultsNum + queryParts.filter

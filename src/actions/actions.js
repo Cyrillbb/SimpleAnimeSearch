@@ -3,8 +3,9 @@ import { queryParts, fetchHeader, apiEND } from './../constants';
 export const GET_MORE = 'GET_MORE'
 export const GET_CATEGORIES = 'GET_CATEGORIES'
 export const TOGGLE_FAVORITE = 'TOGGLE_FAVORITE'
+export const GET_FAV = 'GET_FAV'
 export const GET_ANIME = 'GET_ANIME'
-
+export const GET_LOCAL_STR = 'GET_LOCAL_STR'
 
 export const getAnime = (query) => {
     const url = queryParts.apiURL + query + apiEND
@@ -35,9 +36,22 @@ export const getMore = (url, offset) => {
     }
 }
 
-export const toggleFav = (id) => {
+export const toggleFav = (id, item) => {
     return {
         type: TOGGLE_FAVORITE,
-        payload: id
+        payload: {
+            id: id,
+            item: item
+        }
+    }
+}
+
+export const getLocalStr = () => {
+    return {
+        type: GET_LOCAL_STR,
+        payload: {
+            favsIds: JSON.parse(Storage.getItem('ids')),
+            favs: JSON.parse(Storage.getItem('favs'))
+        }
     }
 }

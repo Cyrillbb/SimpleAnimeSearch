@@ -14,9 +14,9 @@ function AnimeList(props) {
             {props.results.map((item) =>
                 <AnimeCard key={item.id} id={item.id}>
                     <h3 className='cardH'>
-                        <i className="far fa-star"
-                        onClick={() => {props.addFav(item.id)}}
-                        ></i>
+                        {props.favorites.favIds.indexOf(item.id) === -1 ? 
+                        <i className = "far fa-star" onClick = {() => { props.addFav(item.id, item) }}></i> : 
+                        <i className = "fas fa-star" onClick = {() => { props.addFav(item.id, item) }}></i>}
                         {item.attributes.canonicalTitle}
                     </h3>
                     <img className='img' src={item.attributes.posterImage.medium} alt="" />
@@ -37,15 +37,16 @@ function AnimeList(props) {
 const mapStateToProps = (state) => {
     return {
         results: [...state.results.loadedData],
-        url: state.results.url
+        url: state.results.url,
+        favorites: state.favorites
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
         getMoreRes: (url, offset) => dispatch(getMore(url, offset)),
-        addFav: (id) => dispatch(toggleFav(id))
+        addFav: (id, item) => dispatch(toggleFav(id, item))
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(AnimeList)
+export default connect(mapStateToProps, mapDispatchToProps)(AnimeList)    

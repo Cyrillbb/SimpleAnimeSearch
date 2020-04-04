@@ -20,7 +20,7 @@ const mapDispatchToProps = dispatch => {
     return {
         getPop: () => dispatch(getAnime(queryParts.mostPop)),
         getTop: () => dispatch(getAnime(queryParts.topRated)),
-        getAir: () => dispatch(getAnime(queryParts.topAir))
+        getAir: () => dispatch(getAnime(queryParts.topAir)),
     }
 }
 
