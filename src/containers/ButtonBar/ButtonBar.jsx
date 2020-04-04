@@ -1,8 +1,12 @@
 import React from 'react'
-import { getMostPop, getTopAir, getTopRate } from '../../actions/actions'
 import { connect } from 'react-redux'
+import { getAnime } from './../../actions/actions';
+import { queryParts } from './../../constants';
+import { useEffect } from 'react';
 
 function ButtonBar(props) {
+    useEffect(() => props.getPop(), [])
+
     return (
         <div>
             <button onClick={props.getPop}>Most Popular</button>
@@ -14,9 +18,9 @@ function ButtonBar(props) {
 
 const mapDispatchToProps = dispatch => {
     return {
-        getPop: () => dispatch(getMostPop()),
-        getTop: () => dispatch(getTopRate()),
-        getAir: () => dispatch(getTopAir())
+        getPop: () => dispatch(getAnime(queryParts.mostPop)),
+        getTop: () => dispatch(getAnime(queryParts.topRated)),
+        getAir: () => dispatch(getAnime(queryParts.topAir))
     }
 }
 

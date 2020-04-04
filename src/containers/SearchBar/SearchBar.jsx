@@ -1,16 +1,18 @@
 import React from 'react'
-import { nameSearch } from './../../actions/actions';
+import { getAnime } from './../../actions/actions';
 import { connect } from 'react-redux';
 import { debounce } from './../../utility';
 import { Link } from 'react-router-dom'
+import { queryParts } from './../../constants';
 
 function SearchBar(props) {
+    
     return (
         <div>
             <input type="text" id='search' onChange={
                 debounce(
                     () => {                        
-                        props.getByName(document.getElementById('search').value)
+                        props.getByName(queryParts.nameSearch + document.getElementById('search').value)
                     }, 1000)
             } />
             <Link to='/simpleAnimeSearch'>HOME</Link>
@@ -21,7 +23,7 @@ function SearchBar(props) {
 
 const mapDispatchToProps = dispatch => {
     return {
-        getByName: (name) => dispatch(nameSearch(name))
+        getByName: (name) => dispatch(getAnime(name))
     }
 }
 
