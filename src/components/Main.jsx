@@ -5,6 +5,7 @@ import AnimeList from '../containers/List/AnimeList';
 import FavoritesList from '../containers/List/FavoritesList';
 import Header from './../containers/Header';
 import Categories from './../containers/List/Catedories';
+import Title from '../containers/Title';
 
 
 function Main() {
@@ -22,6 +23,9 @@ function Main() {
           </Route>
           <Route exact path='/categories'>
             <Categories />
+          </Route>
+          <Route path='/title'>
+            <Title />
           </Route>
         </Switch>
       </BrowserRouter>

@@ -1,6 +1,7 @@
 export const queryParts = {
     apiURL: 'https://kitsu.io/api/edge/anime?',
     nameSearch: '&filter[text]=',
+    idSearch: '&filter[id]=',
     topRated: '&sort=ratingRank',
     mostPop: '&sort=popularityRank',
     topAir: '&filter[status]=current&sort=popularityRank',

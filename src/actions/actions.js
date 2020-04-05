@@ -5,6 +5,7 @@ export const GET_CATEGORIES = 'GET_CATEGORIES'
 export const TOGGLE_FAVORITE = 'TOGGLE_FAVORITE'
 export const GET_FAV = 'GET_FAV'
 export const GET_ANIME = 'GET_ANIME'
+export const GET_TITLE = 'GET_TITLE'
 export const GET_LOCAL_STR = 'GET_LOCAL_STR'
 
 export const getAnime = (query) => {
@@ -63,6 +64,17 @@ export const getCateg = () => {
         .then(json => dispatch({
             type: GET_CATEGORIES,
             payload: json.data
+        }))
+    }
+}
+
+export const getTitle = (id) => {
+    return dispatch => {
+        fetch(queryParts.apiURL + queryParts.idSearch + id + queryParts.filter)
+        .then(data => data.json())
+        .then(json => dispatch({
+            type: GET_TITLE,
+            payload: json.data[0]
         }))
     }
 }

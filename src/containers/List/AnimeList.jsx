@@ -5,6 +5,8 @@ import { useState } from 'react'
 import AnimeCard from './AnimeCard';
 import { setLocalStr } from '../../utility';
 import { useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { getTitle } from './../../actions/actions';
 
 function AnimeList(props) {
     const [offset, setOffset] = useState(10)
@@ -30,7 +32,9 @@ function AnimeList(props) {
                             }></i>}
                         {item.attributes.canonicalTitle}
                     </h3>
-                    <img className='img' src={item.attributes.posterImage.medium} alt="" />
+                    <Link to={'/title'}>
+                    <img className='img' onClick={() => props.getTit(item.id)} src={item.attributes.posterImage.medium} alt="" />
+                    </Link>
                 </AnimeCard>
             )}
             <button onClick={
@@ -57,7 +61,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = dispatch => {
     return {
         getMoreRes: (url, offset) => dispatch(getMore(url, offset)),
-        addFav: (id, item) => dispatch(toggleFav(id, item))
+        addFav: (id, item) => dispatch(toggleFav(id, item)),
+        getTit: (id) => dispatch(getTitle(id))
     }
 }
 
