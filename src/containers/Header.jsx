@@ -18,7 +18,7 @@ function Header(props) {
             <h1>Simple Anime Search</h1>
             <Link to='/simpleAnimeSearch'>Discover Anime</Link>
             <Link to='/categories'>Browse popular categories</Link>
-            <Link to='/fuck'>Favorites</Link>
+            <Link to='/favorites'>Favorites</Link>
         </div>
     )
 }

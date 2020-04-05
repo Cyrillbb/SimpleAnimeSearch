@@ -1,10 +1,11 @@
 import React from 'react'
-import { getTitle } from './../actions/actions';
+import { toggleFav } from './../actions/actions';
 import { connect } from 'react-redux';
 import { useEffect } from 'react';
+import { setLocalStr } from '../utility';
 
 function Title(props) {
-    useEffect(() => console.log(props))
+    useEffect(() => setLocalStr(props.favIds, props.favorites))
 
     return (
         <div>
@@ -12,6 +13,17 @@ function Title(props) {
                 Object.keys(props.title).length > 0 ?
                     <div>
                         <h3 className='cardH'>
+                            {props.favIds.indexOf(props.title.id) === -1 ?
+                                <i className="far fa-star" onClick={() => {
+                                    props.addFav(props.title.id, props.title);
+
+                                }
+                                }></i> :
+                                <i className="fas fa-star" onClick={() => {
+                                    props.addFav(props.title.id, props.title);
+
+                                }
+                                }></i>}
                             {props.title.attributes.canonicalTitle}
                         </h3>
                         <p>
@@ -42,9 +54,17 @@ function Title(props) {
 
 const mapStateToProps = state => {
     return {
-        title: state.title
+        title: state.title,
+        favorites: [...state.favorites.favs],
+        favIds: [...state.favorites.favIds]
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        addFav: (id, item) => dispatch(toggleFav(id, item)),       
     }
 }
 
 
-export default connect(mapStateToProps, null)(Title)
+export default connect(mapStateToProps, mapDispatchToProps)(Title)

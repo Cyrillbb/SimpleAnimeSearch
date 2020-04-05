@@ -1,13 +1,17 @@
 import React from 'react'
-import { getCateg } from './../../actions/actions';
+import { getCateg, getAnime } from './../../actions/actions';
 import { connect } from 'react-redux';
-import { useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { queryParts } from './../../constants';
 
-function Categories(props) {    
+function Categories(props) {
     return (
         <div>
             {props.categ.map(item =>
-                <p>{item.attributes.title}</p>
+                <Link to='/simpleAnimeSearch'
+                    onClick={
+                        () => props.search(queryParts.categSearch + item.attributes.title + queryParts.mostPop)}>
+                    {item.attributes.title}</Link>
             )}
         </div>
     )
@@ -19,5 +23,11 @@ const mapStateToProps = (state) => {
     }
 }
 
+const mapDispatchToProps = dispatch => {
+    return {
+        search: (catName) => dispatch(getAnime(catName))
+    }
+}
 
-export default connect(mapStateToProps, null)(Categories)
+
+export default connect(mapStateToProps, mapDispatchToProps)(Categories)

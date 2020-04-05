@@ -18,7 +18,7 @@ function Main() {
             <ButtonBar />
             <AnimeList />
           </Route>
-          <Route exact path='/fuck'>
+          <Route exact path='/favorites'>
             <FavoritesList />
           </Route>
           <Route exact path='/categories'>
