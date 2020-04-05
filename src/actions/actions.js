@@ -50,8 +50,19 @@ export const getLocalStr = () => {
     return {
         type: GET_LOCAL_STR,
         payload: {
-            favsIds: JSON.parse(Storage.getItem('ids')),
-            favs: JSON.parse(Storage.getItem('favs'))
+            favIds: JSON.parse(localStorage.getItem('ids')),
+            favs: JSON.parse(localStorage.getItem('favs'))
         }
+    }
+}
+
+export const getCateg = () => {
+    return dispatch => {
+        fetch(queryParts.categories)
+        .then(data => data.json())
+        .then(json => dispatch({
+            type: GET_CATEGORIES,
+            payload: json.data
+        }))
     }
 }

@@ -24,7 +24,7 @@ export const favorite = (state = initialState, action) => {
         case (GET_LOCAL_STR):
             return (
                 {
-                    favsIds: action.payload.favIds,
+                    favIds: action.payload.favIds,
                     favs: action.payload.favs
                 }
             )

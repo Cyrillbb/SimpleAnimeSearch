@@ -8,7 +8,7 @@ export const debounce = (func, delay) => {
   }
 }
 
-export const setLocalStr = (ids, favs) => {
-  Storage.setItem('ids', JSON.stringify(ids))
-  Storage.setItem('favs', favs)
+export const setLocalStr = (ids, favs) => {  
+  localStorage.setItem('ids', JSON.stringify(ids))
+  localStorage.setItem('favs', JSON.stringify(favs))
 }
