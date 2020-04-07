@@ -11,7 +11,7 @@ function Header(props) {
     if(localStorage.getItem('ids') && localStorage.getItem('favs')) {
         props.getLcStr()
     }
-    }, [])    
+    }, [props])    
 
     return (
         <div>

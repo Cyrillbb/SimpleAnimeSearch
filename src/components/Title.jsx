@@ -12,7 +12,7 @@ function Title(props) {
             let id = window.location.pathname.split('/').pop()
             props.getTit(id)
         }
-    }, [])
+    }, [props])
 
     return (
         <div>

@@ -1,5 +1,5 @@
 import React from 'react'
-import { getCateg, getAnime } from './../../actions/actions';
+import { getAnime } from './../../actions/actions';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { queryParts } from './../../constants';
