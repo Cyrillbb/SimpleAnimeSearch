@@ -1,14 +1,15 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import ButtonBar from './../containers/ButtonBar/ButtonBar';
-import AnimeList from '../containers/List/AnimeList';
-import FavoritesList from '../containers/List/FavoritesList';
-import Header from './../containers/Header';
-import Categories from './../containers/List/Catedories';
-import Title from '../containers/Title';
+import ButtonBar from './ButtonBar/ButtonBar';
+import AnimeList from './List/AnimeList';
+import FavoritesList from './List/FavoritesList';
+import Header from './Header';
+import Categories from './List/Catedories';
+import Title from './Title';
+import { connect } from 'react-redux';
 
 
-function Main() {
+function Main(props) {
   return (
     <div className="App">
       <BrowserRouter>
@@ -24,7 +25,7 @@ function Main() {
           <Route exact path='/categories'>
             <Categories />
           </Route>
-          <Route path='/title'>
+          <Route path={'/simpleAnimeSearch/' + props.titleId}>
             <Title />
           </Route>
         </Switch>
@@ -33,4 +34,12 @@ function Main() {
   );
 }
 
-export default Main;
+
+
+const mapStateToProps = state => {
+  return {
+      titleId: state.title.id,      
+  }
+}
+
+export default connect(mapStateToProps, null)(Main)

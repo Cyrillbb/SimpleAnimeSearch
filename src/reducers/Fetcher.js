@@ -2,7 +2,9 @@ import { GET_MORE, GET_ANIME } from "../actions/actions"
 
 const initialState = {
     url: '',
-    loadedData: []
+    loadedData: [],
+    penging: true,
+    pendingMore: false,
 }
 
 export const fetcher = (state = initialState, action) => {
@@ -11,7 +13,8 @@ export const fetcher = (state = initialState, action) => {
             return (
                 {
                     url: action.payload.url,
-                    loadedData: action.payload.data
+                    loadedData: action.payload.data,
+                    pending: action.payload.pending
                 }
             )
         case (GET_MORE):
@@ -19,6 +22,7 @@ export const fetcher = (state = initialState, action) => {
                 {
                     url: action.payload.url,
                     loadedData: state.loadedData.concat(action.payload.data),
+                    pendingMore: action.payload.pendingMore
                 }
             )
         default:
