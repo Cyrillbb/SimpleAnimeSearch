@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/SimpleAnimeSearchRedux/static/css/main.8df52c7e.chunk.css",
+    "main.js": "/SimpleAnimeSearchRedux/static/js/main.7638ef0d.chunk.js",
+    "main.js.map": "/SimpleAnimeSearchRedux/static/js/main.7638ef0d.chunk.js.map",
+    "runtime-main.js": "/SimpleAnimeSearchRedux/static/js/runtime-main.a0a46ef4.js",
+    "runtime-main.js.map": "/SimpleAnimeSearchRedux/static/js/runtime-main.a0a46ef4.js.map",
+    "static/js/2.2767fa97.chunk.js": "/SimpleAnimeSearchRedux/static/js/2.2767fa97.chunk.js",
+    "static/js/2.2767fa97.chunk.js.map": "/SimpleAnimeSearchRedux/static/js/2.2767fa97.chunk.js.map",
+    "index.html": "/SimpleAnimeSearchRedux/index.html",
+    "precache-manifest.17e9fafaa7262062388d85397775cc93.js": "/SimpleAnimeSearchRedux/precache-manifest.17e9fafaa7262062388d85397775cc93.js",
+    "service-worker.js": "/SimpleAnimeSearchRedux/service-worker.js",
+    "static/css/main.8df52c7e.chunk.css.map": "/SimpleAnimeSearchRedux/static/css/main.8df52c7e.chunk.css.map",
+    "static/js/2.2767fa97.chunk.js.LICENSE.txt": "/SimpleAnimeSearchRedux/static/js/2.2767fa97.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.a0a46ef4.js",
+    "static/js/2.2767fa97.chunk.js",
+    "static/css/main.8df52c7e.chunk.css",
+    "static/js/main.7638ef0d.chunk.js"
+  ]
+}
