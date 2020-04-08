@@ -11,12 +11,12 @@ function FavoriresList(props) {
     return (
         <div className='Favs'>
             {props.favorites.map((item) =>
-                <div className='Favs__card'>
+                <div className='Favs__card'  key={item.id}>
                     <i className="fas fa-star" style={{ color: 'yellow' }} onClick={() => {
                         props.toggleFav(item.id, item)
                     }
                     }></i>
-                    <Link className='Favs__card__link' key={item.id} to={'/SimpleAnimeSearch/' + item.id}>
+                    <Link className='Favs__card__link' to={'/SimpleAnimeSearch/' + item.id}>
                         <h3 className='cardH' onClick={() => props.getTit(item.id)}>
                             {item.attributes.canonicalTitle}
                         </h3>

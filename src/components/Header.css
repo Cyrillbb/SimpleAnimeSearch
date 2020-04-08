@@ -5,6 +5,11 @@
     font-size: larger;
 }
 
+#bars {
+    color: white;
+    display: none;
+}
+
 .header__h3 {
     color: white;
     background-color: black;
@@ -44,13 +49,30 @@
 }
 
 @media only screen and (max-width: 600px) {
+    .header__h3 {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        background: black;
+    }    
+    #bars {
+        color: white;
+        display: block;
+        transition: all 0.5s;
+    }
+    #bars:hover {
+        color: red;
+        transition: all 0.5s;
+    }
     .header__nav {
+        display: none;
+    }
+    .header__nav--responsive {
         display: flex;
         flex-direction: column;
         justify-content: center;
         background-color: black;
         font-size: large;
-        background: rgb(0, 0, 0);
-        background: radial-gradient(circle, rgba(0, 0, 0, 1) 44%, rgba(255, 51, 0, 1) 100%);
+        background-color: black;
     }
 }

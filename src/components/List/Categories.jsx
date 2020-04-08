@@ -9,7 +9,7 @@ function Categories(props) {
     return (
         <div className="Cats">
             {props.categ.map(item =>
-                <Link className='Cats__link' to='/SimpleAnimeSearch'
+                <Link className='Cats__link'  key={item.id} to='/SimpleAnimeSearch'
                     onClick={
                         () => props.search(queryParts.categSearch + item.attributes.title + queryParts.mostPop)}>
                     {item.attributes.title}</Link>

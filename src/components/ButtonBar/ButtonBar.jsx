@@ -8,7 +8,7 @@ import './ButtonBar.css'
 function ButtonBar(props) {    
 
     return (
-        <div className='ButtonBar'>
+        <div className='ButtonBar' id='btnBar'>
             <input type="text" className='ButtonBar__input' id='search' placeholder='anime search' onChange={
                 debounce(
                     () => {                        
