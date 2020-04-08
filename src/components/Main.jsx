@@ -20,10 +20,10 @@ function Main(props) {
             <ButtonBar />
             <AnimeList />
           </Route>
-          <Route exact path='/favorites'>
+          <Route exact path='/simpleAnimeSearch/favorites'>
             <FavoritesList />
           </Route>
-          <Route exact path='/categories'>
+          <Route exact path='/simpleAnimeSearch/categories'>
             <Categories />
           </Route>
           <Route path={'/simpleAnimeSearch/' + props.titleId}>
