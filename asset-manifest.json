@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/SimpleAnimeSearchRedux/static/css/main.8df52c7e.chunk.css",
-    "main.js": "/SimpleAnimeSearchRedux/static/js/main.7638ef0d.chunk.js",
-    "main.js.map": "/SimpleAnimeSearchRedux/static/js/main.7638ef0d.chunk.js.map",
-    "runtime-main.js": "/SimpleAnimeSearchRedux/static/js/runtime-main.a0a46ef4.js",
-    "runtime-main.js.map": "/SimpleAnimeSearchRedux/static/js/runtime-main.a0a46ef4.js.map",
-    "static/js/2.2767fa97.chunk.js": "/SimpleAnimeSearchRedux/static/js/2.2767fa97.chunk.js",
-    "static/js/2.2767fa97.chunk.js.map": "/SimpleAnimeSearchRedux/static/js/2.2767fa97.chunk.js.map",
-    "index.html": "/SimpleAnimeSearchRedux/index.html",
-    "precache-manifest.17e9fafaa7262062388d85397775cc93.js": "/SimpleAnimeSearchRedux/precache-manifest.17e9fafaa7262062388d85397775cc93.js",
-    "service-worker.js": "/SimpleAnimeSearchRedux/service-worker.js",
-    "static/css/main.8df52c7e.chunk.css.map": "/SimpleAnimeSearchRedux/static/css/main.8df52c7e.chunk.css.map",
-    "static/js/2.2767fa97.chunk.js.LICENSE.txt": "/SimpleAnimeSearchRedux/static/js/2.2767fa97.chunk.js.LICENSE.txt"
+    "main.css": "/SimpleAnimeSearch/static/css/main.8df52c7e.chunk.css",
+    "main.js": "/SimpleAnimeSearch/static/js/main.2a535160.chunk.js",
+    "main.js.map": "/SimpleAnimeSearch/static/js/main.2a535160.chunk.js.map",
+    "runtime-main.js": "/SimpleAnimeSearch/static/js/runtime-main.da648eba.js",
+    "runtime-main.js.map": "/SimpleAnimeSearch/static/js/runtime-main.da648eba.js.map",
+    "static/js/2.2767fa97.chunk.js": "/SimpleAnimeSearch/static/js/2.2767fa97.chunk.js",
+    "static/js/2.2767fa97.chunk.js.map": "/SimpleAnimeSearch/static/js/2.2767fa97.chunk.js.map",
+    "index.html": "/SimpleAnimeSearch/index.html",
+    "precache-manifest.869001d776e3b89677d1b2e23f23af20.js": "/SimpleAnimeSearch/precache-manifest.869001d776e3b89677d1b2e23f23af20.js",
+    "service-worker.js": "/SimpleAnimeSearch/service-worker.js",
+    "static/css/main.8df52c7e.chunk.css.map": "/SimpleAnimeSearch/static/css/main.8df52c7e.chunk.css.map",
+    "static/js/2.2767fa97.chunk.js.LICENSE.txt": "/SimpleAnimeSearch/static/js/2.2767fa97.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.a0a46ef4.js",
+    "static/js/runtime-main.da648eba.js",
     "static/js/2.2767fa97.chunk.js",
     "static/css/main.8df52c7e.chunk.css",
-    "static/js/main.7638ef0d.chunk.js"
+    "static/js/main.2a535160.chunk.js"
   ]
 }
