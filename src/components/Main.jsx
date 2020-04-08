@@ -4,14 +4,15 @@ import ButtonBar from './ButtonBar/ButtonBar';
 import AnimeList from './List/AnimeList';
 import FavoritesList from './List/FavoritesList';
 import Header from './Header';
-import Categories from './List/Catedories';
+import Categories from './List/Categories';
 import Title from './Title';
 import { connect } from 'react-redux';
+import './Main.css'
 
 
 function Main(props) {
   return (
-    <div className="App">
+    <div className="main">
       <BrowserRouter>
         <Header />
         <Switch>

@@ -5,7 +5,7 @@ export const queryParts = {
     topRated: '&sort=ratingRank',
     mostPop: '&sort=popularityRank',
     topAir: '&filter[status]=current&sort=popularityRank',
-    resultsNum: 10,
+    resultsNum: 12,
     pageLim: '&page[limit]=',
     pageOff: '&page[offset]=',
     categories: 'https://kitsu.io/api/edge/categories?sort=-totalMediaCount&page[limit]=60&page[offset]=0',

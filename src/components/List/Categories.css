@@ -1,0 +1,25 @@
+.Cats {
+    background: rgb(0, 0, 0);
+    background: radial-gradient(circle, rgba(0, 0, 0, 1) 84%, rgba(255, 51, 0, 1) 200%);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    margin-bottom: 0px;
+    flex-wrap: wrap;
+    align-items: stretch;
+    padding: 0px;
+    height: 500px;
+    width: 100%;
+}
+
+.Cats__link {
+    text-decoration: none;
+    color: white;
+    font-size: large;
+    margin: 0px;    
+}
+
+.Cats__link:hover {
+    color: red;
+}

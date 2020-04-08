@@ -1,0 +1,33 @@
+.Favs {
+    background: rgb(0, 0, 0);
+    background: radial-gradient(circle, rgba(0, 0, 0, 1) 84%, rgba(255, 51, 0, 1) 200%);
+    color: white;
+    display: flex;
+    flex-direction: column;    
+    margin: auto;
+    margin-bottom: 0px;
+    flex-wrap: wrap;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+
+.Favs__card {
+    display: flex;
+    flex-direction: row;
+    margin: 20px;
+}
+
+.Favs__card h3 {
+    margin: 0px;
+}
+
+.Favs__card__link {
+    text-decoration: none;
+    color: white;
+}
+
+.Favs__card__link:hover {
+    text-decoration: none;
+    color: red;
+}

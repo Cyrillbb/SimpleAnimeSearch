@@ -1,0 +1,18 @@
+.AnimeCard {
+    background-color: rgb(0, 0, 0);
+    color: white;
+    display: flex;
+    flex-direction: column;    
+    border: solid black 2px;
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    transition: all 0.3s;   
+}
+
+.AnimeCard__h3 {
+    background-color: rgb(32, 64, 93);
+    margin: 0px;
+    height: 40px;
+    padding-top: 15px;
+}

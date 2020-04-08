@@ -15,41 +15,45 @@ function AnimeList(props) {
 
 
     return (
-        <div>
-            {props.pending ?
-                <div className="loader"></div> :
-                props.results.map((item) =>
-                    <AnimeCard key={item.id} id={item.id}>
-                        <h3 className='cardH'>
-                            {props.favIds.indexOf(item.id) === -1 ?
-                                <i className="far fa-star" onClick={() => {
-                                    props.addFav(item.id, item);
+        <div style={{backgroundColor: "#001f3f"}}>
+            <div className='AnimeList'>
+                {props.pending ?
+                    <div className="loader" style={{ margin: 'auto', marginTop: '150px' }}></div> :
+                    props.results.map((item) =>
+                        <AnimeCard key={item.id} id={item.id}>
+                            <h3 className='AnimeCard__h3'>
+                                {props.favIds.indexOf(item.id) === -1 ?
+                                    <i className="far fa-star" style={{color: 'yellow'}} onClick={() => {
+                                        props.addFav(item.id, item);
 
-                                }
-                                }></i> :
-                                <i className="fas fa-star" onClick={() => {
-                                    props.addFav(item.id, item);
+                                    }
+                                    }></i> :
+                                    <i className="fas fa-star" style={{color: 'yellow'}} onClick={() => {
+                                        props.addFav(item.id, item);
 
-                                }
-                                }></i>}
-                            {item.attributes.canonicalTitle}
-                        </h3>
-                        <Link to={'/simpleAnimeSearch/' + item.id}>
-                            <img className='img' onClick={() => props.getTit(item.id)} src={item.attributes.posterImage.medium} alt="" />
-                        </Link>
-                    </AnimeCard>
-                )}
+                                    }
+                                    }></i>}
+                                {item.attributes.canonicalTitle}
+                            </h3>
+                            <Link to={'/simpleAnimeSearch/' + item.id}>
+                                <img className='img' onClick={() => props.getTit(item.id)} src={item.attributes.posterImage.medium} alt="" />
+                            </Link>
+                        </AnimeCard>
+                    )}
+
+            </div>
             {
                 props.more ?
-                    <div className="loader"></div> :
-                    <button onClick={
+                    <div className="loader" style={{margin: 'auto'}}></div> :
+                    <button className='AnimeList__btn'
+                    style={{marginTop: '150px' }}
+                     onClick={
                         () => {
                             setOffset(offset + 10);
                             props.getMoreRes(props.url, offset);
                         }
                     }>Show More</button>
-            }
-        </div>
+            }</div>
     )
 }
 

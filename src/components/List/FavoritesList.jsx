@@ -1,27 +1,27 @@
 import React, { useEffect } from 'react'
 import { toggleFav, getTitle } from './../../actions/actions';
 import { connect } from 'react-redux';
-import AnimeCard from './AnimeCard';
 import { setLocalStr } from '../../utility';
 import { Link } from 'react-router-dom';
+import './Favs.css'
 
 function FavoriresList(props) {
     useEffect(() => setLocalStr(props.favIds, props.favorites))
 
     return (
-        <div>
+        <div className='Favs'>
             {props.favorites.map((item) =>
-                <AnimeCard key={item.id} id={item.id}>
-                    <Link to={'/simpleAnimeSearch/' + item.id}>
+                <div className='Favs__card'>
+                    <i className="fas fa-star" style={{ color: 'yellow' }} onClick={() => {
+                        props.toggleFav(item.id, item)
+                    }
+                    }></i>
+                    <Link className='Favs__card__link' key={item.id} to={'/simpleAnimeSearch/' + item.id}>
                         <h3 className='cardH' onClick={() => props.getTit(item.id)}>
-                            <i className="fas fa-star" onClick={() => {
-                                props.toggleFav(item.id, item)
-                            }
-                            }></i>
                             {item.attributes.canonicalTitle}
                         </h3>
                     </Link>
-                </AnimeCard>
+                </div>
             )}
         </div>
     )

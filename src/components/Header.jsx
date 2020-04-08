@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { useEffect } from 'react';
 import { getAnime, getLocalStr, getCateg } from './../actions/actions';
 import { queryParts } from './../constants';
+import './Header.css'
 
 function Header(props) {
     useEffect(() => {(props.getPop());
@@ -14,11 +15,13 @@ function Header(props) {
     }, [props])    
 
     return (
-        <div>
-            <h1>Simple Anime Search</h1>
-            <Link to='/simpleAnimeSearch'>Discover Anime</Link>
-            <Link to='/categories'>Browse popular categories</Link>
-            <Link to='/favorites'>Favorites</Link>
+        <div className='header'>
+            <h3 className='header__h3'>Simple Anime Search</h3>
+            <nav className='header__nav'>
+            <Link className='header__nav__Link' to='/simpleAnimeSearch'>Discover Anime</Link>
+            <Link className='header__nav__Link' to='/categories'>Browse popular categories</Link>
+            <Link className='header__nav__Link' to='/favorites'>Favorites</Link>
+            </nav>
         </div>
     )
 }

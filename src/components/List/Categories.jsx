@@ -3,12 +3,13 @@ import { getAnime } from './../../actions/actions';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { queryParts } from './../../constants';
+import './Categories.css'
 
 function Categories(props) {
     return (
-        <div>
+        <div className="Cats">
             {props.categ.map(item =>
-                <Link to='/simpleAnimeSearch'
+                <Link className='Cats__link' to='/simpleAnimeSearch'
                     onClick={
                         () => props.search(queryParts.categSearch + item.attributes.title + queryParts.mostPop)}>
                     {item.attributes.title}</Link>
