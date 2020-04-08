@@ -18,9 +18,9 @@ function Header(props) {
         <div className='header'>
             <h3 className='header__h3'>Simple Anime Search</h3>
             <nav className='header__nav'>
-            <Link className='header__nav__Link' to='/simpleAnimeSearch'>Discover Anime</Link>
-            <Link className='header__nav__Link' to='/simpleAnimeSearch/categories'>Browse popular categories</Link>
-            <Link className='header__nav__Link' to='/simpleAnimeSearch/favorites'>Favorites</Link>
+            <Link className='header__nav__Link' to='/SimpleAnimeSearch'>Discover Anime</Link>
+            <Link className='header__nav__Link' to='/SimpleAnimeSearch/categories'>Browse popular categories</Link>
+            <Link className='header__nav__Link' to='/SimpleAnimeSearch/favorites'>Favorites</Link>
             </nav>
         </div>
     )

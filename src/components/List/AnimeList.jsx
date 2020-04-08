@@ -35,7 +35,7 @@ function AnimeList(props) {
                                     }></i>}
                                 {item.attributes.canonicalTitle}
                             </h3>
-                            <Link to={'/simpleAnimeSearch/' + item.id}>
+                            <Link to={'/SimpleAnimeSearch/' + item.id}>
                                 <img className='img' onClick={() => props.getTit(item.id)} src={item.attributes.posterImage.medium} alt="" />
                             </Link>
                         </AnimeCard>

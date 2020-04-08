@@ -16,7 +16,7 @@ function FavoriresList(props) {
                         props.toggleFav(item.id, item)
                     }
                     }></i>
-                    <Link className='Favs__card__link' key={item.id} to={'/simpleAnimeSearch/' + item.id}>
+                    <Link className='Favs__card__link' key={item.id} to={'/SimpleAnimeSearch/' + item.id}>
                         <h3 className='cardH' onClick={() => props.getTit(item.id)}>
                             {item.attributes.canonicalTitle}
                         </h3>

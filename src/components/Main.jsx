@@ -16,17 +16,17 @@ function Main(props) {
       <BrowserRouter>
         <Header />
         <Switch>
-          <Route exact path='/simpleAnimeSearch'>
+          <Route exact path='/SimpleAnimeSearch'>
             <ButtonBar />
             <AnimeList />
           </Route>
-          <Route exact path='/simpleAnimeSearch/favorites'>
+          <Route exact path='/SimpleAnimeSearch/favorites'>
             <FavoritesList />
           </Route>
-          <Route exact path='/simpleAnimeSearch/categories'>
+          <Route exact path='/SimpleAnimeSearch/categories'>
             <Categories />
           </Route>
-          <Route path={'/simpleAnimeSearch/' + props.titleId}>
+          <Route path={'/SimpleAnimeSearch/' + props.titleId}>
             <Title />
           </Route>
         </Switch>
