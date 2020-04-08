@@ -13,6 +13,7 @@
 .AnimeCard__h3 {
     background-color: rgb(32, 64, 93);
     margin: 0px;
-    height: 40px;
+    height: 67px;
     padding-top: 15px;
+    width: 390px;  
 }
