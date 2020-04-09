@@ -4,12 +4,13 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { queryParts } from './../../constants';
 import './Categories.css'
+import { PropTypes } from 'prop-types';
 
 function Categories(props) {
     return (
         <div className="Cats">
             {props.categ.map(item =>
-                <Link className='Cats__link'  key={item.id} to='/SimpleAnimeSearch'
+                <Link className='Cats__link' key={item.id} to='/SimpleAnimeSearch'
                     onClick={
                         () => props.search(queryParts.categSearch + item.attributes.title + queryParts.mostPop)}>
                     {item.attributes.title}</Link>
@@ -28,6 +29,11 @@ const mapDispatchToProps = dispatch => {
     return {
         search: (catName) => dispatch(getAnime(catName))
     }
+}
+
+Categories.propTypes = {
+    categ: PropTypes.array,
+    search: PropTypes.func
 }
 
 

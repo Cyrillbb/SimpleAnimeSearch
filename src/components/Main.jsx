@@ -1,14 +1,14 @@
-import React from 'react';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import ButtonBar from './ButtonBar/ButtonBar';
-import AnimeList from './List/AnimeList';
-import FavoritesList from './List/FavoritesList';
-import Header from './Header';
-import Categories from './List/Categories';
-import Title from './Title';
-import { connect } from 'react-redux';
-import './Main.css'
-
+import React from "react";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
+import ButtonBar from "./ButtonBar/ButtonBar";
+import AnimeList from "./List/AnimeList";
+import FavoritesList from "./List/FavoritesList";
+import Header from "./Header";
+import Categories from "./List/Categories";
+import Title from "./Title";
+import { connect } from "react-redux";
+import PropTypes from 'prop-types';
+import "./Main.css";
 
 function Main(props) {
   return (
@@ -16,17 +16,17 @@ function Main(props) {
       <BrowserRouter>
         <Header />
         <Switch>
-          <Route exact path='/SimpleAnimeSearch'>
+          <Route exact path="/SimpleAnimeSearch">
             <ButtonBar />
             <AnimeList />
           </Route>
-          <Route exact path='/SimpleAnimeSearch/favorites'>
+          <Route exact path="/SimpleAnimeSearch/favorites">
             <FavoritesList />
           </Route>
-          <Route exact path='/SimpleAnimeSearch/categories'>
+          <Route exact path="/SimpleAnimeSearch/categories">
             <Categories />
           </Route>
-          <Route path={'/SimpleAnimeSearch/' + props.titleId}>
+          <Route path={"/SimpleAnimeSearch/" + props.titleId}>
             <Title />
           </Route>
         </Switch>
@@ -35,12 +35,14 @@ function Main(props) {
   );
 }
 
-
-
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
-      titleId: state.title.id,      
-  }
+    titleId: state.title.id,
+  };
+};
+
+Main.propTypes = {
+  titleId: PropTypes.string
 }
 
-export default connect(mapStateToProps, null)(Main)
+export default connect(mapStateToProps, null)(Main);
