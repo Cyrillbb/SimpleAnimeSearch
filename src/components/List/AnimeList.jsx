@@ -12,7 +12,7 @@ import { PropTypes } from "prop-types";
 import { queryParts } from './../../constants';
 
 function AnimeList(props) {
-  const [offset, setOffset] = useState(10);
+  const [offset, setOffset] = useState(queryParts.resultsNum);
   useEffect(() => setLocalStr(props.favIds, props.favorites));
 
   return (
@@ -65,7 +65,7 @@ function AnimeList(props) {
             className="AnimeList__btn"
             style={{ marginTop: "150px" }}
             onClick={() => {
-              setOffset(offset + 12);
+              setOffset(offset + queryParts.resultsNum);
               props.getMoreRes(props.url, offset);
             }}
           >
