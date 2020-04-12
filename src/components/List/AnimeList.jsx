@@ -1,7 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
 import { getMore, toggleFav } from "../../actions/actions";
-import { useState } from "react";
 import AnimeCard from "./AnimeCard";
 import { setLocalStr } from "../../utility";
 import { useEffect } from "react";
@@ -9,10 +8,8 @@ import { Link } from "react-router-dom";
 import { getTitle } from "./../../actions/actions";
 import "./AnimeList.css";
 import { PropTypes } from "prop-types";
-import { queryParts } from './../../constants';
 
-function AnimeList(props) {
-  const [offset, setOffset] = useState(queryParts.resultsNum);
+function AnimeList(props) {  
   useEffect(() => setLocalStr(props.favIds, props.favorites));
 
   return (
@@ -64,9 +61,8 @@ function AnimeList(props) {
           <button
             className="AnimeList__btn"
             style={{ marginTop: "150px" }}
-            onClick={() => {
-              setOffset(offset + queryParts.resultsNum);
-              props.getMoreRes(props.url, offset);
+            onClick={() => {              
+              props.getMoreRes(props.url, props.offset);
             }}
           >
             Show More
@@ -84,6 +80,7 @@ const mapStateToProps = (state) => {
     favIds: [...state.favorites.favIds],
     pending: state.results.pending,
     more: state.results.pendingMore,
+    offset: state.results.offset,
   };
 };
 
@@ -105,6 +102,7 @@ AnimeList.propTypes = {
   getMoreRes: PropTypes.func,
   addFav: PropTypes.func,
   getTit: PropTypes.func,
+  offset: PropTypes.number,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(AnimeList);

@@ -26,7 +26,8 @@ export const getAnime = (query) => {
                 payload: {
                     data: json.data,
                     url: url,
-                    pending: false
+                    pending: false,
+                    offset: queryParts.resultsNum,
                 }
             }))
     }
@@ -49,7 +50,8 @@ export const getMore = (url, offset) => {
                 payload: {
                     data: json.data,
                     url: url,
-                    pendingMore: false
+                    pendingMore: false,
+                    offset: offset + queryParts.resultsNum
                 }
             }))
     }
