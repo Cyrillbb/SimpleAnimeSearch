@@ -9,7 +9,8 @@ import { getTitle } from "./../../actions/actions";
 import "./AnimeList.css";
 import { PropTypes } from "prop-types";
 
-function AnimeList(props) {  
+
+function AnimeList(props) {
   useEffect(() => setLocalStr(props.favIds, props.favorites));
 
   return (
@@ -20,7 +21,7 @@ function AnimeList(props) {
             className="loader"
             style={{ margin: "auto", marginTop: "150px" }}
           ></div>
-        ) : (
+        ) : ( 
             props.results.map((item) => (
               <AnimeCard key={item.id} id={item.id}>
                 <h3 className="AnimeCard__h3">
@@ -52,22 +53,23 @@ function AnimeList(props) {
                   />
                 </Link>
               </AnimeCard>
-            ))
+            )) 
           )}
-      </div>
-      {props.more ? (
-        <div className="loader" style={{ margin: "auto" }}></div>
-      ) : (
-          <button
-            className="AnimeList__btn"
-            style={{ marginTop: "150px" }}
-            onClick={() => {              
-              props.getMoreRes(props.url, props.offset);
-            }}
-          >
-            Show More
-          </button>
-        )}
+      </div>      
+        props.more ? (
+          <div className="loader" style={{ margin: "auto" }}></div>
+        ) : (
+            <button
+              className="AnimeList__btn"
+              style={{ marginTop: "150px" }}
+              onClick={() => {
+                props.getMoreRes(props.url, props.offset);
+              }}
+            >
+              Show More
+            </button>
+          )
+      
     </div>
   );
 }
