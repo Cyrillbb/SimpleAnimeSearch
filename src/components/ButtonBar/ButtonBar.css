@@ -33,10 +33,8 @@
 }
 
 @media only screen and (max-width: 600px) {
+    
     .ButtonBar {
-        display: none;
-    }
-    .ButtonBar--responsive {
         background: rgb(0, 0, 0);
         background: radial-gradient(circle, rgba(0, 0, 0, 1) 44%, rgba(255, 51, 0, 1) 100%);
         display: flex;
