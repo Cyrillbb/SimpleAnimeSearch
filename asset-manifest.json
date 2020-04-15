@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/SimpleAnimeSearch/static/css/main.1ea1a59a.chunk.css",
+    "main.css": "/SimpleAnimeSearch/static/css/main.de1a09a8.chunk.css",
     "main.js": "/SimpleAnimeSearch/static/js/main.7291a44a.chunk.js",
     "main.js.map": "/SimpleAnimeSearch/static/js/main.7291a44a.chunk.js.map",
     "runtime-main.js": "/SimpleAnimeSearch/static/js/runtime-main.da648eba.js",
@@ -8,15 +8,15 @@
     "static/js/2.071261d3.chunk.js": "/SimpleAnimeSearch/static/js/2.071261d3.chunk.js",
     "static/js/2.071261d3.chunk.js.map": "/SimpleAnimeSearch/static/js/2.071261d3.chunk.js.map",
     "index.html": "/SimpleAnimeSearch/index.html",
-    "precache-manifest.4891af8717c44b5fa7369efe2dde6a00.js": "/SimpleAnimeSearch/precache-manifest.4891af8717c44b5fa7369efe2dde6a00.js",
+    "precache-manifest.5cee8d570115c503aa3ec38405fa6fec.js": "/SimpleAnimeSearch/precache-manifest.5cee8d570115c503aa3ec38405fa6fec.js",
     "service-worker.js": "/SimpleAnimeSearch/service-worker.js",
-    "static/css/main.1ea1a59a.chunk.css.map": "/SimpleAnimeSearch/static/css/main.1ea1a59a.chunk.css.map",
+    "static/css/main.de1a09a8.chunk.css.map": "/SimpleAnimeSearch/static/css/main.de1a09a8.chunk.css.map",
     "static/js/2.071261d3.chunk.js.LICENSE.txt": "/SimpleAnimeSearch/static/js/2.071261d3.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.da648eba.js",
     "static/js/2.071261d3.chunk.js",
-    "static/css/main.1ea1a59a.chunk.css",
+    "static/css/main.de1a09a8.chunk.css",
     "static/js/main.7291a44a.chunk.js"
   ]
 }
