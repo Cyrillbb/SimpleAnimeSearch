@@ -18,29 +18,12 @@ function Header(props) {
 
   const handleHide = () => {
     if (
-      document.getElementById("nav").className === "header__nav" &&
-      !document.getElementById("btnBar")
-    ) {
+      document.getElementById("nav").className === "header__nav") {
       document.getElementById("nav").className = "header__nav--responsive";
     } else if (
-      document.getElementById("nav").className === "header__nav--responsive" &&
-      !document.getElementById("btnBar")
-    ) {
+      document.getElementById("nav").className === "header__nav--responsive") {
       document.getElementById("nav").className = "header__nav";
-    }
-    if (
-      document.getElementById("btnBar") &&
-      document.getElementById("btnBar").className === "ButtonBar"
-    ) {
-      document.getElementById("btnBar").className = "ButtonBar--responsive";
-      document.getElementById("nav").className = "header__nav--responsive";
-    } else if (
-      document.getElementById("btnBar") &&
-      document.getElementById("btnBar").className === "ButtonBar--responsive"
-    ) {
-      document.getElementById("btnBar").className = "ButtonBar";
-      document.getElementById("nav").className = "header__nav";
-    }
+    }    
   };
 
   return (
