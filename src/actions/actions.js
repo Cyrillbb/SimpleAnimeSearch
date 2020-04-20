@@ -10,7 +10,7 @@ export const GET_LOCAL_STR = 'GET_LOCAL_STR'
 
 export const getAnime = (query) => {
     const url = queryParts.apiURL + query + apiEND
-    return dispatch => {
+    return async dispatch => {
         dispatch({
             type: GET_ANIME,
             payload: {
@@ -19,22 +19,22 @@ export const getAnime = (query) => {
                 pending: true
             }
         })
-        fetch(url, fetchHeader)
-            .then(data => data.json())
-            .then(json => dispatch({
-                type: GET_ANIME,
-                payload: {
-                    data: json.data,
-                    url: url,
-                    pending: false,
-                    offset: queryParts.resultsNum,
-                }
-            }))
+        const response = await fetch(url, fetchHeader)
+        let json = await response.json();
+        dispatch({
+            type: GET_ANIME,
+            payload: {
+                data: json.data,
+                url: url,
+                pending: false,
+                offset: queryParts.resultsNum,
+            }
+        })
     }
 }
 
 export const getMore = (url, offset) => {
-    return dispatch => {
+    return async dispatch => {
         dispatch({
             type: GET_MORE,
             payload: {
@@ -43,17 +43,17 @@ export const getMore = (url, offset) => {
                 pendingMore: true
             }
         })
-        fetch(url + queryParts.pageOff + offset, fetchHeader)
-            .then(data => data.json())
-            .then(json => dispatch({
-                type: GET_MORE,
-                payload: {
-                    data: json.data,
-                    url: url,
-                    pendingMore: false,
-                    offset: offset + queryParts.resultsNum
-                }
-            }))
+        const response = await fetch(url + queryParts.pageOff + offset, fetchHeader)
+        const json = await response.json()
+        dispatch({
+            type: GET_MORE,
+            payload: {
+                data: json.data,
+                url: url,
+                pendingMore: false,
+                offset: offset + queryParts.resultsNum
+            }
+        })
     }
 }
 
@@ -78,18 +78,18 @@ export const getLocalStr = () => {
 }
 
 export const getCateg = () => {
-    return dispatch => {
-        fetch(queryParts.categories)
-            .then(data => data.json())
-            .then(json => dispatch({
-                type: GET_CATEGORIES,
-                payload: json.data
-            }))
+    return async dispatch => {
+        const response = await fetch(queryParts.categories)
+        const json = await response.json()
+        dispatch({
+            type: GET_CATEGORIES,
+            payload: json.data
+        })
     }
 }
 
 export const getTitle = (id) => {
-    return dispatch => {
+    return async dispatch => {
         dispatch({
             type: GET_TITLE,
             payload: {
@@ -98,15 +98,15 @@ export const getTitle = (id) => {
                 data: {},
             }
         })
-        fetch(queryParts.apiURL + queryParts.idSearch + id + queryParts.filter)
-            .then(data => data.json())
-            .then(json => dispatch({
-                type: GET_TITLE,
-                payload: {
-                    id: id,
-                    pending: false,
-                    data: json.data[0],
-                }
-            }))
+        const response = await fetch(queryParts.apiURL + queryParts.idSearch + id + queryParts.filter)
+        const json = await response.json()
+        dispatch({
+            type: GET_TITLE,
+            payload: {
+                id: id,
+                pending: false,
+                data: json.data[0],
+            }
+        })
     }
 }
