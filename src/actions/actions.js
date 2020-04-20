@@ -20,7 +20,7 @@ export const getAnime = (query) => {
             }
         })
         const response = await fetch(url, fetchHeader)
-        let json = await response.json();
+        const json = await response.json();
         dispatch({
             type: GET_ANIME,
             payload: {
