@@ -98,7 +98,7 @@ export const getTitle = (id) => {
                 data: {},
             }
         })
-        const response = await fetch(queryParts.apiURL + queryParts.idSearch + id + queryParts.filter)
+        const response = await fetch(queryParts.apiURL + queryParts.idSearch + id + queryParts.filter + queryParts.youtFilter)
         const json = await response.json()
         dispatch({
             type: GET_TITLE,

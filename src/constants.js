@@ -11,10 +11,13 @@ export const queryParts = {
     categories: 'https://kitsu.io/api/edge/categories?sort=-totalMediaCount&page[limit]=60&page[offset]=0',
     filter: '&fields[anime]=id,posterImage,titles,canonicalTitle,averageRating,popularityRank,ageRating,episodeCount,status,synopsis',
     categSearch: 'filter[categories]=',    
-    idFilter: 'https://kitsu.io/api/edge/anime?&filter[id]='
+    idFilter: 'https://kitsu.io/api/edge/anime?&filter[id]=',
+    youtFilter: ',youtubeVideoId'
 }
 
 export const apiEND = queryParts.pageLim + queryParts.resultsNum + queryParts.filter
+
+export const YOUTUBE_URL = 'https://www.youtube.com/embed/'
 
 export const sortTypes = {
     byRating: 'topRated',
