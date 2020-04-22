@@ -79,7 +79,7 @@ export const getLocalStr = () => {
 
 export const getCateg = () => {
     return async dispatch => {
-        const response = await fetch(queryParts.categories)
+        const response = await fetch(queryParts.categories, fetchHeader)
         const json = await response.json()
         dispatch({
             type: GET_CATEGORIES,
@@ -98,7 +98,7 @@ export const getTitle = (id) => {
                 data: {},
             }
         })
-        const response = await fetch(queryParts.apiURL + queryParts.idSearch + id + queryParts.filter + queryParts.youtFilter)
+        const response = await fetch(queryParts.apiURL + queryParts.idSearch + id + queryParts.filter + queryParts.youtFilter, fetchHeader)
         const json = await response.json()
         dispatch({
             type: GET_TITLE,
