@@ -19,17 +19,22 @@ export const getAnime = (query) => {
                 pending: true
             }
         })
-        const response = await fetch(url, fetchHeader)
-        const json = await response.json();
-        dispatch({
-            type: GET_ANIME,
-            payload: {
-                data: json.data,
-                url: url,
-                pending: false,
-                offset: queryParts.resultsNum,
-            }
-        })
+        try {
+            const response = await fetch(url, fetchHeader)
+            const json = await response.json();
+            dispatch({
+                type: GET_ANIME,
+                payload: {
+                    data: json.data,
+                    url: url,
+                    pending: false,
+                    offset: queryParts.resultsNum,
+                }
+            })
+        }
+        catch (e) {
+            console.error(e)
+        }
     }
 }
 
@@ -43,17 +48,20 @@ export const getMore = (url, offset) => {
                 pendingMore: true
             }
         })
-        const response = await fetch(url + queryParts.pageOff + offset, fetchHeader)
-        const json = await response.json()
-        dispatch({
-            type: GET_MORE,
-            payload: {
-                data: json.data,
-                url: url,
-                pendingMore: false,
-                offset: offset + queryParts.resultsNum
-            }
-        })
+        try {
+            const response = await fetch(url + queryParts.pageOff + offset, fetchHeader)
+            const json = await response.json()
+            dispatch({
+                type: GET_MORE,
+                payload: {
+                    data: json.data,
+                    url: url,
+                    pendingMore: false,
+                    offset: offset + queryParts.resultsNum
+                }
+            })
+        }
+        catch (e) { console.error(e) }
     }
 }
 
@@ -79,12 +87,17 @@ export const getLocalStr = () => {
 
 export const getCateg = () => {
     return async dispatch => {
-        const response = await fetch(queryParts.categories, fetchHeader)
-        const json = await response.json()
-        dispatch({
-            type: GET_CATEGORIES,
-            payload: json.data
-        })
+        try {
+            const response = await fetch(queryParts.categories, fetchHeader)
+            const json = await response.json()
+            dispatch({
+                type: GET_CATEGORIES,
+                payload: json.data
+            })
+        }
+        catch (e) {
+            console.error(e)
+        }
     }
 }
 
@@ -98,15 +111,20 @@ export const getTitle = (id) => {
                 data: {},
             }
         })
-        const response = await fetch(queryParts.apiURL + queryParts.idSearch + id + queryParts.filter + queryParts.youtFilter, fetchHeader)
-        const json = await response.json()
-        dispatch({
-            type: GET_TITLE,
-            payload: {
-                id: id,
-                pending: false,
-                data: json.data[0],
-            }
-        })
+        try {
+            const response = await fetch(queryParts.apiURL + queryParts.idSearch + id + queryParts.filter + queryParts.youtFilter, fetchHeader)
+            const json = await response.json()
+            dispatch({
+                type: GET_TITLE,
+                payload: {
+                    id: id,
+                    pending: false,
+                    data: json.data[0],
+                }
+            })
+        }
+        catch (e) {
+            console.error(e)
+        }
     }
 }
