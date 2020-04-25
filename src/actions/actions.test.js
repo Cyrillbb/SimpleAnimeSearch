@@ -1,7 +1,7 @@
 import thunk from 'redux-thunk';
 import configureMockStore from 'redux-mock-store'
 import fetchMock from 'fetch-mock'
-import { GET_ANIME, getAnime, TOGGLE_FAVORITE, toggleFav, getTitle, GET_TITLE, getCateg, GET_CATEGORIES } from './actions';
+import { GET_ANIME, getAnime, TOGGLE_FAVORITE, toggleFav, getTitle, GET_TITLE, getCateg, GET_CATEGORIES, getMore, GET_MORE } from './actions';
 import { queryParts } from '../constants';
 import expect from 'expect'
 
@@ -143,4 +143,45 @@ describe('gets anime categories', () => {
       expect(store.getActions()).toEqual(expectedResults)
     })
   })
+})
+
+describe('get more async', () => {
+  afterEach(() => {
+    fetchMock.restore()
+  })
+
+  it('gets more search results', () => {
+    fetchMock.getOnce('https://kitsu.io/api/edge/anime?&sort=ratingRank&page[limit]=12&fields[anime]=id,posterImage,titles,canonicalTitle,averageRating,popularityRank,ageRating,episodeCount,status,synopsis&page[offset]=&page[offset]=12',
+      {
+        data: [],
+        headers: { 'content-type': 'application/json' }
+      })
+    const expectedResult = [
+      {
+        type: GET_MORE,
+        payload: {
+          data: [],
+          url: '',
+          pendingMore: true
+        }
+      },
+      {
+        type: GET_MORE,
+        payload: {
+          data: [],
+          url: 'https://kitsu.io/api/edge/anime?&sort=ratingRank&page[limit]=12&fields[anime]=id,posterImage,titles,canonicalTitle,averageRating,popularityRank,ageRating,episodeCount,status,synopsis&page[offset]=',
+          pendingMore: false,
+          offset: 24
+        }
+      }
+    ]
+    const store = mockStore({})
+
+    return store.dispatch(getMore('https://kitsu.io/api/edge/anime?&sort=ratingRank&page[limit]=12&fields[anime]=id,posterImage,titles,canonicalTitle,averageRating,popularityRank,ageRating,episodeCount,status,synopsis&page[offset]=', 12))
+      .then(() => {
+        expect(store.getActions()).toEqual(expectedResult)
+      })
+
+  })
+
 })
