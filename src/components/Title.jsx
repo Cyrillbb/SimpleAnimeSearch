@@ -74,7 +74,8 @@ function Title(props) {
               </button>
             </div>
             <div id='watchBox' className='TitleBox__vidContainer' onClick={handleHide}>
-              <iframe title="trailer" src={YOUTUBE_URL + props.title.attributes.youtubeVideoId}></iframe>              
+              <iframe title="trailer" src={YOUTUBE_URL + props.title.attributes.youtubeVideoId}></iframe>
+              <i className="fas fa-times"></i>
             </div>
           </div>
         )}
