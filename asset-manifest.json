@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/SimpleAnimeSearch/static/css/main.8442fdef.chunk.css",
-    "main.js": "/SimpleAnimeSearch/static/js/main.b73e9f6d.chunk.js",
-    "main.js.map": "/SimpleAnimeSearch/static/js/main.b73e9f6d.chunk.js.map",
-    "runtime-main.js": "/SimpleAnimeSearch/static/js/runtime-main.da648eba.js",
-    "runtime-main.js.map": "/SimpleAnimeSearch/static/js/runtime-main.da648eba.js.map",
-    "static/js/2.f39d6271.chunk.js": "/SimpleAnimeSearch/static/js/2.f39d6271.chunk.js",
-    "static/js/2.f39d6271.chunk.js.map": "/SimpleAnimeSearch/static/js/2.f39d6271.chunk.js.map",
+    "main.css": "/SimpleAnimeSearch/static/css/main.c60386aa.chunk.css",
+    "main.js": "/SimpleAnimeSearch/static/js/main.5f56d0f2.chunk.js",
+    "main.js.map": "/SimpleAnimeSearch/static/js/main.5f56d0f2.chunk.js.map",
+    "runtime-main.js": "/SimpleAnimeSearch/static/js/runtime-main.8c7798f3.js",
+    "runtime-main.js.map": "/SimpleAnimeSearch/static/js/runtime-main.8c7798f3.js.map",
+    "static/js/2.a6abbf88.chunk.js": "/SimpleAnimeSearch/static/js/2.a6abbf88.chunk.js",
+    "static/js/2.a6abbf88.chunk.js.map": "/SimpleAnimeSearch/static/js/2.a6abbf88.chunk.js.map",
     "index.html": "/SimpleAnimeSearch/index.html",
-    "precache-manifest.f04fa23ce1bd3c54bce0ce0066b680a8.js": "/SimpleAnimeSearch/precache-manifest.f04fa23ce1bd3c54bce0ce0066b680a8.js",
+    "precache-manifest.e5185f2a42f0201b74e28abe3e0a1d5c.js": "/SimpleAnimeSearch/precache-manifest.e5185f2a42f0201b74e28abe3e0a1d5c.js",
     "service-worker.js": "/SimpleAnimeSearch/service-worker.js",
-    "static/css/main.8442fdef.chunk.css.map": "/SimpleAnimeSearch/static/css/main.8442fdef.chunk.css.map",
-    "static/js/2.f39d6271.chunk.js.LICENSE.txt": "/SimpleAnimeSearch/static/js/2.f39d6271.chunk.js.LICENSE.txt"
+    "static/css/main.c60386aa.chunk.css.map": "/SimpleAnimeSearch/static/css/main.c60386aa.chunk.css.map",
+    "static/js/2.a6abbf88.chunk.js.LICENSE.txt": "/SimpleAnimeSearch/static/js/2.a6abbf88.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.da648eba.js",
-    "static/js/2.f39d6271.chunk.js",
-    "static/css/main.8442fdef.chunk.css",
-    "static/js/main.b73e9f6d.chunk.js"
+    "static/js/runtime-main.8c7798f3.js",
+    "static/js/2.a6abbf88.chunk.js",
+    "static/css/main.c60386aa.chunk.css",
+    "static/js/main.5f56d0f2.chunk.js"
   ]
 }
