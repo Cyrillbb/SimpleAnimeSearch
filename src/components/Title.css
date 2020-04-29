@@ -1,7 +1,6 @@
 .TitleBox {
     background-color: #001f3f;
     height: 100%;
-    
 }
 
 .TitleBox__info {
@@ -9,19 +8,19 @@
     background: radial-gradient(circle, rgba(0, 0, 0, 1) 84%, rgba(255, 51, 0, 1) 200%);
     color: white;
     display: flex;
-    flex-direction: row;    
-    border: solid black 2px;
-    margin: auto;    
-    margin-bottom: 0px;    
+    flex-direction: row;
+    margin: auto;
+    margin-bottom: 0px;
     flex-wrap: wrap;
     justify-content: center;
-    padding: 20px;  
-    height: 100%; 
-    
+    padding: 20px;
+    padding-top: 0px;
+    height: 100%;
 }
 
 .TitleBox__info__img {
     margin-right: 20px;
+    padding-top: 20px;
 }
 
 .TitleBox__info__text {
@@ -29,14 +28,14 @@
     flex-direction: column;
     max-width: 600px;
     align-items: flex-start;
-    /* max-height: 600px; */   
+    padding-top: 0px;
 }
 
-.TitleBox__info__text  h3 {
+.TitleBox__info__text h3 {
     margin: 0px;
 }
 
-.TitleBox__info__text  p {
+.TitleBox__info__text p {
     margin: 3px;
     text-align: left;
 }
@@ -70,12 +69,12 @@
 .TitleBox__vidContainer--watch {
     display: block;
     position: fixed;
-    top: auto;
+    top: 0;
     width: 100%;
     height: 100%;
-    background-color: #000000e1;  
-    margin-top: 0px; 
-    display: flex; 
+    background-color: #000000e1;
+    margin-top: 0px;
+    display: flex;
     flex-direction: row;
     justify-items: flex-start;
     justify-content: center;
@@ -91,9 +90,9 @@
 }
 
 .TitleBox__vidContainer--watch i {
-   font-size: larger;
-   cursor: pointer;
-   transition: all 0.4s;
+    font-size: larger;
+    cursor: pointer;
+    transition: all 0.4s;
 }
 
 .TitleBox__vidContainer--watch i:hover {
@@ -101,4 +100,8 @@
     color: red;
     cursor: pointer;
     transition: all 0.4s;
- }
+}
+
+.noScroll {
+    overflow: hidden;
+}
