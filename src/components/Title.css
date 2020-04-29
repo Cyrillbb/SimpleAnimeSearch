@@ -87,12 +87,14 @@
     border: none;
     max-width: 70%;
     max-height: 90%;
+    margin-top: 100px;
 }
 
 .TitleBox__vidContainer--watch i {
     font-size: larger;
     cursor: pointer;
     transition: all 0.4s;
+    margin-top: 100px;
 }
 
 .TitleBox__vidContainer--watch i:hover {
