@@ -4,7 +4,7 @@ import { GET_MORE, GET_ANIME } from "../actions/actions"
 const initialState = {
     url: '',
     loadedData: [],
-    penging: true,
+    pending: true,
     pendingMore: false,
     offset: 0,
 }
