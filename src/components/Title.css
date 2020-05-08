@@ -62,10 +62,6 @@
     transition: all 0.4s ease 0s;
 }
 
-.TitleBox__vidContainer {
-    display: none;
-}
-
 .TitleBox__vidContainer--watch {
     display: block;
     position: fixed;

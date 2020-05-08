@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { toggleFav, getTitle } from "./../actions/actions";
 import { connect } from "react-redux";
 import { useEffect } from "react";
@@ -8,6 +8,7 @@ import { PropTypes } from "prop-types";
 import { YOUTUBE_URL } from './../constants';
 
 function Title(props) {
+  const [trailer, setTrailer] = useState(false)
   useEffect(() => setLocalStr(props.favIds, props.favorites));
   useEffect(() => {
     if (!props.titleId) {
@@ -17,11 +18,11 @@ function Title(props) {
   }, [props]);
 
   const handleWatch = () => {
-    document.getElementById('watchBox').className = 'TitleBox__vidContainer--watch'
+    setTrailer(true)
   }
 
   const handleHide = () => {
-    document.getElementById('watchBox').className = 'TitleBox__vidContainer'
+    setTrailer(false)
   }
 
   return (
@@ -73,10 +74,11 @@ function Title(props) {
                 Watch trailer
               </button>
             </div>
-            <div id='watchBox' className='TitleBox__vidContainer' onClick={handleHide}>
-              <iframe title="trailer" src={YOUTUBE_URL + props.title.attributes.youtubeVideoId}></iframe>
-              <i className="fas fa-times"></i>
-            </div>
+            {trailer ? 
+            <div id='watchBox' className='TitleBox__vidContainer--watch' onClick={handleHide}>
+            <iframe title="trailer" src={YOUTUBE_URL + props.title.attributes.youtubeVideoId}></iframe>
+            <i className="fas fa-times"></i>
+          </div> : <div></div>}
           </div>
         )}
     </div>
