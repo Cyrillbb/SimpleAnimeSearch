@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { useEffect } from "react";
@@ -16,14 +16,16 @@ function Header(props) {
     }
   }, [props]);
 
+  const navRef = useRef(null)
+
   const handleHide = () => {
     if (
-      document.getElementById("nav").className === "header__nav") {
-      document.getElementById("nav").className = "header__nav--responsive";
+      navRef.current.className === "header__nav") {
+      navRef.current.className = "header__nav--responsive";
     } else if (
-      document.getElementById("nav").className === "header__nav--responsive") {
-      document.getElementById("nav").className = "header__nav";
-    }    
+      navRef.current.className === "header__nav--responsive") {
+      navRef.current.className = "header__nav";
+    }
   };
 
   return (
@@ -32,7 +34,7 @@ function Header(props) {
         Simple Anime Search
         <i className="fas fa-bars" id="bars" onClick={handleHide}></i>
       </h3>
-      <nav className="header__nav" id="nav">
+      <nav className="header__nav" id="nav" ref={navRef}>
         <Link className="header__nav__Link" to="/SimpleAnimeSearch">
           Discover Anime
         </Link>
