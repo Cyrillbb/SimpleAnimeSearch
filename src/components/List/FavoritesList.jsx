@@ -11,25 +11,47 @@ function FavoriresList(props) {
 
   return (
     <div className="Favs">
-      {props.favorites.map((item) => (
-        <div className="Favs__card" key={item.id}>
-          <i
-            className="fas fa-star"
-            style={{ color: "yellow" }}
-            onClick={() => {
-              props.toggleFav(item.id, item);
-            }}
-          ></i>
-          <Link
-            className="Favs__card__link"
-            to={"/SimpleAnimeSearch/" + item.id}
-          >
-            <h3 className="cardH" onClick={() => props.getTit(item.id)}>
-              {item.attributes.canonicalTitle}
-            </h3>
-          </Link>
-        </div>
-      ))}
+      <table style={{ borderCollapse: 'collapse', border: 'solid 1px white' }}>
+        <tbody>
+          <tr style={{ border: 'solid 1px white' }}>
+            <td style={{ border: 'solid 1px white' }}>
+              Remove
+            </td>
+            <td style={{ border: 'solid 1px white' }}>
+              Title
+            </td>
+            <td style={{ border: 'solid 1px white' }}>
+              Rating
+            </td>
+          </tr>
+          {props.favorites.map((item) => (
+            <tr key={item.id} style={{ border: 'solid 1px white' }}>
+              <td style={{ border: 'solid 1px white', width: '5vw' }}>
+                <i
+                  className="fas fa-star"
+                  style={{ color: "yellow" }}
+                  onClick={() => {
+                    props.toggleFav(item.id, item);
+                  }}
+                ></i>
+              </td>
+              <td style={{ border: 'solid 1px white', width: '50vw' }}>
+                <Link
+                  className="Favs__card__link"
+                  to={"/SimpleAnimeSearch/" + item.id}
+                >
+                  <h3 className="cardH" onClick={() => props.getTit(item.id)}>
+                    {item.attributes.canonicalTitle}
+                  </h3>
+                </Link>
+              </td>
+              <td style={{ border: 'solid 1px white', width: '5vw' }}>
+                {item.attributes.averageRating}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 }
