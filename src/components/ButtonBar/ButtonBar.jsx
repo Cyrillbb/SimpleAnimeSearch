@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { connect } from "react-redux";
 import { getAnime } from "./../../actions/actions";
 import { queryParts } from "./../../constants";
@@ -7,16 +7,17 @@ import "./ButtonBar.css";
 import { PropTypes } from "prop-types";
 
 function ButtonBar(props) {
+  const searchRef = useRef(null)
   return (
     <div className="ButtonBar" id="btnBar">
       <input
         type="text"
         className="ButtonBar__input"
-        id="search"
+        ref={searchRef}
         placeholder="anime search"
         onChange={debounce(() => {
           props.getByName(
-            queryParts.nameSearch + document.getElementById("search").value
+            queryParts.nameSearch + searchRef.current.value
           );
         }, 1000)}
       />
