@@ -10,7 +10,7 @@ export const queryParts = {
     pageOff: '&page[offset]=',
     categories: 'https://kitsu.io/api/edge/categories?sort=-totalMediaCount&page[limit]=60&page[offset]=0',
     filter: '&fields[anime]=id,posterImage,titles,canonicalTitle,averageRating,popularityRank,ageRating,episodeCount,status,synopsis',
-    categSearch: 'filter[categories]=',    
+    categSearch: 'filter[categories]=',
     idFilter: 'https://kitsu.io/api/edge/anime?&filter[id]=',
     youtFilter: ',youtubeVideoId'
 }
@@ -29,6 +29,5 @@ export const fetchHeader = {
     method: 'GET',
     headers: {
         'Accept': 'application/vnd.api+json',
-        'Content-Type': 'application/vnd.api+json',
     }
 }
