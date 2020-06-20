@@ -35,5 +35,6 @@ export const fetchHeader = {
     method: 'GET',
     headers: {
         'Accept': 'application/vnd.api+json',
+        'Content-Type': 'application/vnd.api+json'
     }
 }
