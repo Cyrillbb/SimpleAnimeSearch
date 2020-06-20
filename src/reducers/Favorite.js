@@ -1,29 +1,21 @@
 
-import { TOGGLE_FAVORITE, GET_LOCAL_STR } from './../actions/actions';
+import { TOGGLE_FAVORITE } from './../actions/actions';
+import { GET_FAVORITES } from '../actions/myApiActions';
 
-const initialState = {    
-    favs: []
-}
+const initialState = []
 
 export const favorite = (state = initialState, action) => {
     switch (action.type) {
         case (TOGGLE_FAVORITE):
-            if (state.favs.find(i => i.id === action.payload.item.id) === undefined) {
-                return {                   
-                    favs: [...state.favs, action.payload.item]
-                }
+            if (state.find(i => i.id === action.payload.item.id) === undefined) {
+                return [...state, action.payload.item]
+
             }
             else {
-                return {                    
-                    favs: state.favs.filter(item => item.id !== action.payload.item.id)
-                }
+                return state.filter(item => item.id !== action.payload.item.id)
+
             }
-        case (GET_LOCAL_STR):
-            return (
-                {                    
-                    favs: action.payload.favs
-                }
-            )
+            case(GET_FAVORITES): return action.payload
         default:
             return state
     }

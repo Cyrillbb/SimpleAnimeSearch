@@ -11,18 +11,19 @@ import PropTypes from 'prop-types';
 import "./Main.css";
 import RegWindow from "./auth/RegWindow";
 import { useEffect } from "react";
-import { getToken, getUserByToken } from "../actions/myApiActions";
+import { getToken, getUserByToken, getFavorites } from "../actions/myApiActions";
 import LoginWindow from "./auth/LoginWindow";
 
 function Main(props) {
-  const { getToken, getUserName } = props
+  const { getToken, getUserName, getFavs } = props
   useEffect(() => {
     let cookie = document.cookie.split('=')
     if (cookie[0] === 'token' && cookie[1].length > 0) {
       getToken(cookie[1])
       getUserName(cookie[1])
+      getFavs(cookie[1])
     }
-  }, [getToken, getUserName])
+  }, [getToken, getUserName, getFavs])
 
   return (
     <div className="main">
@@ -63,7 +64,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = dispatch => {
   return {
     getToken: (token) => dispatch(getToken(token)),
-    getUserName: (token) => dispatch(getUserByToken(token))
+    getUserName: (token) => dispatch(getUserByToken(token)),
+    getFavs: (token) => dispatch(getFavorites(token))
   }
 }
 

@@ -1,0 +1,25 @@
+.comment {
+    width: 60%;
+    background-color: black;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 0 auto;
+}
+
+.comment__from {       
+    color: red;
+}
+
+.comment__body {    
+    text-align: start;
+    word-break: break-all;
+    line-break: loose;
+}
+
+@media only screen and (max-width: 600px) {
+    .comment {
+        width: 100%;
+    }
+}

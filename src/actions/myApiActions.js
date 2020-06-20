@@ -2,6 +2,8 @@ import { myApiEND } from './../constants';
 
 export const GET_TOKEN = "GET_TOKEN"
 export const GET_USER_NAME = 'GET_USER_NAME'
+export const GET_COMMENTS = 'GET_COMMENTS'
+export const GET_FAVORITES = 'GET_FAVORITES'
 
 
 
@@ -27,6 +29,50 @@ export const getUserByToken = (token) => {
             dispatch({
                 type: GET_USER_NAME,
                 payload: name.userName
+            })
+        }
+        catch (err) {
+            console.log(new Error(err))
+        }
+    }
+}
+
+export const getComments = (id) => {
+    return async dispatch => {
+        try {
+            const resp = await fetch(myApiEND + 'getComments/' + id, {
+                method: 'GET',
+                mode: 'cors',
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
+            const data = await resp.json()
+            dispatch ({
+                type: GET_COMMENTS,
+                payload: data.comments
+            })
+        }
+        catch (err) {
+            console.log(new Error(err))
+        }
+    }
+}
+
+export const getFavorites = (token) => {
+    return async dispatch => {
+        try {
+            const resp = await fetch(myApiEND + 'getMyFavs', {
+                method: 'GET',
+                mode: 'cors',
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            })
+            const favs = await resp.json()
+            dispatch({
+                type: GET_FAVORITES,
+                payload: favs.favs
             })
         }
         catch (err) {

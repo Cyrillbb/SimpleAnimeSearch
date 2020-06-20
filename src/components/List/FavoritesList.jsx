@@ -1,13 +1,24 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { toggleFav, getTitle } from "./../../actions/actions";
 import { connect } from "react-redux";
-import { setLocalStr } from "../../utility";
 import { Link } from "react-router-dom";
 import "./Favs.css";
 import { PropTypes } from "prop-types";
+import { useEffect } from "react";
+import { myApiEND } from './../../constants';
 
-function FavoriresList(props) {
-  useEffect(() => setLocalStr(props.favorites));
+function FavoriresList(props) {  
+  useEffect(() => {
+    fetch(myApiEND + 'saveFavs', {
+      method: 'POST',
+      mode: 'cors',
+      headers: {
+        'Authorization': `Bearer ${props.token}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ favs: props.favorites })
+    })
+  }, [props.favorites, props.token])
 
   return (
     <div className="Favs">
@@ -58,7 +69,8 @@ function FavoriresList(props) {
 
 const mapStateToProps = (state) => {
   return {
-    favorites: [...state.favorites.favs],    
+    favorites: [...state.favorites],
+    token: state.token
   };
 };
 

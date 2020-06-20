@@ -2,15 +2,26 @@ import React from "react";
 import { connect } from "react-redux";
 import { getMore, toggleFav } from "../../actions/actions";
 import AnimeCard from "./AnimeCard";
-import { setLocalStr } from "../../utility";
-import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { getTitle } from "./../../actions/actions";
 import "./AnimeList.css";
 import { PropTypes } from "prop-types";
+import { getComments } from "../../actions/myApiActions";
+import { myApiEND } from './../../constants';
+import { useEffect } from "react";
 
-function AnimeList(props) {  
-  useEffect(() => setLocalStr(props.favs));
+function AnimeList(props) {
+  useEffect(() => {
+    fetch(myApiEND + 'saveFavs', {
+      method: 'POST',
+      mode: 'cors',
+      headers: {
+        'Authorization': `Bearer ${props.token}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ favs: props.favs })
+    })
+  }, [props.favs, props.token])
 
   return (
     <div style={{ backgroundColor: "#001f3f" }}>
@@ -30,6 +41,7 @@ function AnimeList(props) {
                       style={{ color: "yellow" }}
                       onClick={() => {
                         props.addFav(item);
+
                       }}
                     ></i>
                   ) : (
@@ -46,7 +58,7 @@ function AnimeList(props) {
                 <Link to={"/SimpleAnimeSearch/" + item.id}>
                   <img
                     className="img"
-                    onClick={() => props.getTit(item.id)}
+                    onClick={() => { props.getTit(item.id); props.getComments(item.id) }}
                     src={item.attributes.posterImage.medium}
                     alt=""
                   />
@@ -61,7 +73,7 @@ function AnimeList(props) {
           <button
             className="AnimeList__btn"
             style={{ marginTop: "150px" }}
-            onClick={() => {              
+            onClick={() => {
               props.getMoreRes(props.url, props.offset);
             }}
           >
@@ -76,10 +88,11 @@ const mapStateToProps = (state) => {
   return {
     results: [...state.results.loadedData],
     url: state.results.url,
-    favs: [...state.favorites.favs],    
+    favs: [...state.favorites],
     pending: state.results.pending,
     more: state.results.pendingMore,
     offset: state.results.offset,
+    token: state.token
   };
 };
 
@@ -88,6 +101,7 @@ const mapDispatchToProps = (dispatch) => {
     getMoreRes: (url, offset) => dispatch(getMore(url, offset)),
     addFav: (item) => dispatch(toggleFav(item)),
     getTit: (id) => dispatch(getTitle(id)),
+    getComments: (id) => dispatch(getComments(id))
   };
 };
 
@@ -103,5 +117,6 @@ AnimeList.propTypes = {
   getTit: PropTypes.func,
   offset: PropTypes.number,
 };
+
 
 export default connect(mapStateToProps, mapDispatchToProps)(AnimeList);

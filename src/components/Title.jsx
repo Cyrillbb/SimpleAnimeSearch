@@ -2,20 +2,33 @@ import React, { useState } from "react";
 import { toggleFav, getTitle } from "./../actions/actions";
 import { connect } from "react-redux";
 import { useEffect } from "react";
-import { setLocalStr } from "../utility";
 import "./Title.css";
 import { PropTypes } from "prop-types";
-import { YOUTUBE_URL } from './../constants';
+import { YOUTUBE_URL, myApiEND } from './../constants';
+import { getComments } from "../actions/myApiActions";
+import CommentsSec from "./commentsSec/CommentsSec";
 
 function Title(props) {
-  const [trailer, setTrailer] = useState(false)
-  useEffect(() => setLocalStr(props.favorites));
+  const [trailer, setTrailer] = useState(false) 
   useEffect(() => {
     if (!props.titleId) {
       let id = window.location.pathname.split("/").pop();
       props.getTit(id);
-    }
-  }, [props]);
+      props.getComments(id)
+    }    
+  }, [props]); 
+  
+  useEffect(() => {
+    fetch(myApiEND + 'saveFavs', {
+      method: 'POST',
+      mode: 'cors',
+      headers: {
+        'Authorization': `Bearer ${props.token}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ favs: props.favorites })
+    })
+  }, [props.favorites, props.token])
 
   const handleWatch = () => {
     setTrailer(true)
@@ -74,13 +87,14 @@ function Title(props) {
                 Watch trailer
               </button>
             </div>
-            {trailer ? 
-            <div id='watchBox' className='TitleBox__vidContainer--watch' onClick={handleHide}>
-            <iframe title="trailer" src={YOUTUBE_URL + props.title.attributes.youtubeVideoId}></iframe>
-            <i className="fas fa-times"></i>
-          </div> : <div></div>}
+            {trailer ?
+              <div id='watchBox' className='TitleBox__vidContainer--watch' onClick={handleHide}>
+                <iframe title="trailer" src={YOUTUBE_URL + props.title.attributes.youtubeVideoId}></iframe>
+                <i className="fas fa-times"></i>
+              </div> : <div></div>}
           </div>
         )}
+        <CommentsSec />
     </div>
   );
 }
@@ -88,9 +102,11 @@ function Title(props) {
 const mapStateToProps = (state) => {
   return {
     title: state.title.title,
-    favorites: [...state.favorites.favs],   
+    favorites: [...state.favorites],
     pending: state.title.pending,
     titleId: state.title.id,
+    comments: state.comments,
+    token: state.token
   };
 };
 
@@ -98,6 +114,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     addFav: (id, item) => dispatch(toggleFav(id, item)),
     getTit: (id) => dispatch(getTitle(id)),
+    getComments: (id) => dispatch(getComments(id))
   };
 };
 

@@ -5,6 +5,7 @@ import { CategoriesFetcher } from './CategoriesFetcher';
 import { TitleFetcher } from './TitleFetcher';
 import { tokenGetter } from './TokenGetter';
 import { userNameGetter } from './userNameGetter';
+import { commentsGetter } from './commentsGetter';
 
 
 export const rootReducer = combineReducers({
@@ -14,4 +15,5 @@ export const rootReducer = combineReducers({
     title: TitleFetcher,
     token: tokenGetter,
     userName: userNameGetter,
+    comments: commentsGetter,
 })
