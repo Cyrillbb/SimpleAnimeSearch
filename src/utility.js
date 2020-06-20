@@ -8,9 +8,8 @@ export const debounce = (func, delay) => {
   }
 }
 
-export const setLocalStr = (ids, favs) => {
-  if (ids.length > 0) {
-    localStorage.setItem('ids', JSON.stringify(ids))
+export const setLocalStr = (favs) => {
+  if (favs.length > 0) {    
     localStorage.setItem('favs', JSON.stringify(favs))
   }
   else {

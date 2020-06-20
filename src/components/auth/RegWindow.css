@@ -1,0 +1,54 @@
+.RegWindow {
+    background-color: black;
+    color: white;
+    width: 50%;
+    margin: 15px auto;
+}
+
+.RegForm {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+}
+
+.RegForm label {
+    margin: 5px;
+    transition: all 0.4s ease 0s;
+    cursor: pointer;
+}
+
+.RegForm label:hover {
+    color: red
+}
+
+.RegWindow__input {
+    background-color: white;
+    background-position: 10px 10px;
+    background-repeat: no-repeat;
+    margin: 5px;
+    border-radius: 2px;
+    width: 40%;
+}
+
+.RegWindow__button {
+    color: #fff !important;
+    text-decoration: none;
+    background: #000000;
+    padding: 10px;
+    border-radius: 5px;
+    display: inline-block;
+    border: none;
+    transition: all 0.4s ease 0s;
+    font-size: large;
+    cursor: pointer;
+}
+
+.RegWindow__button:hover {
+    background: #ff0000;
+    letter-spacing: 1px;
+    -webkit-box-shadow: 0px 5px 40px -10px rgba(0, 0, 0, 0.57);
+    -moz-box-shadow: 0px 5px 40px -10px rgba(0, 0, 0, 0.57);
+    box-shadow: 5px 40px -10px rgba(0, 0, 0, 0.57);
+    transition: all 0.4s ease 0s;
+}

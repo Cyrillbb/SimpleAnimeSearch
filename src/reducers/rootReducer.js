@@ -3,11 +3,15 @@ import { fetcher } from './Fetcher';
 import { favorite } from './Favorite';
 import { CategoriesFetcher } from './CategoriesFetcher';
 import { TitleFetcher } from './TitleFetcher';
+import { tokenGetter } from './TokenGetter';
+import { userNameGetter } from './userNameGetter';
 
 
 export const rootReducer = combineReducers({
     results: fetcher,
     favorites: favorite,
     categories: CategoriesFetcher,
-    title: TitleFetcher    
+    title: TitleFetcher,
+    token: tokenGetter,
+    userName: userNameGetter,
 })

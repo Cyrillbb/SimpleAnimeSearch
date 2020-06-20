@@ -1,30 +1,26 @@
 
 import { TOGGLE_FAVORITE, GET_LOCAL_STR } from './../actions/actions';
 
-const initialState = {
-    favIds: [],
+const initialState = {    
     favs: []
 }
 
 export const favorite = (state = initialState, action) => {
     switch (action.type) {
         case (TOGGLE_FAVORITE):
-            if (state.favIds.indexOf(action.payload.id) === -1) {
-                return {
-                    favIds: [...state.favIds, action.payload.id],
+            if (state.favs.find(i => i.id === action.payload.item.id) === undefined) {
+                return {                   
                     favs: [...state.favs, action.payload.item]
                 }
             }
             else {
-                return {
-                    favIds: state.favIds.filter(id => id !== action.payload.id),
-                    favs: state.favs.filter(item => item.id !== action.payload.id)
+                return {                    
+                    favs: state.favs.filter(item => item.id !== action.payload.item.id)
                 }
             }
         case (GET_LOCAL_STR):
             return (
-                {
-                    favIds: action.payload.favIds,
+                {                    
                     favs: action.payload.favs
                 }
             )

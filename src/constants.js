@@ -15,6 +15,12 @@ export const queryParts = {
     youtFilter: ',youtubeVideoId'
 }
 
+export const myApiPaths = {
+    
+}
+
+export const myApiEND = 'http://localhost:5000/'
+
 export const apiEND = queryParts.pageLim + queryParts.resultsNum + queryParts.filter
 
 export const YOUTUBE_URL = 'https://www.youtube.com/embed/'

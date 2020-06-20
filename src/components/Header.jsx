@@ -11,7 +11,7 @@ function Header(props) {
   useEffect(() => {
     props.getPop();
     props.getCat();
-    if (localStorage.getItem("ids") && localStorage.getItem("favs")) {
+    if (localStorage.getItem("favs")) {
       props.getLcStr();
     }
   }, [props]);

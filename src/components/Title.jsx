@@ -9,7 +9,7 @@ import { YOUTUBE_URL } from './../constants';
 
 function Title(props) {
   const [trailer, setTrailer] = useState(false)
-  useEffect(() => setLocalStr(props.favIds, props.favorites));
+  useEffect(() => setLocalStr(props.favorites));
   useEffect(() => {
     if (!props.titleId) {
       let id = window.location.pathname.split("/").pop();
@@ -41,12 +41,12 @@ function Title(props) {
             />
             <div className="TitleBox__info__text">
               <h3 className="cardH">
-                {props.favIds.indexOf(props.title.id) === -1 ? (
+                {props.favorites.find(i => i.id === props.title.id) === undefined ? (
                   <i
                     className="far fa-star"
                     style={{ color: "yellow" }}
                     onClick={() => {
-                      props.addFav(props.title.id, props.title);
+                      props.addFav(props.title);
                     }}
                   ></i>
                 ) : (
@@ -54,7 +54,7 @@ function Title(props) {
                       className="fas fa-star"
                       style={{ color: "yellow" }}
                       onClick={() => {
-                        props.addFav(props.title.id, props.title);
+                        props.addFav(props.title);
                       }}
                     ></i>
                   )}
@@ -88,8 +88,7 @@ function Title(props) {
 const mapStateToProps = (state) => {
   return {
     title: state.title.title,
-    favorites: [...state.favorites.favs],
-    favIds: [...state.favorites.favIds],
+    favorites: [...state.favorites.favs],   
     pending: state.title.pending,
     titleId: state.title.id,
   };

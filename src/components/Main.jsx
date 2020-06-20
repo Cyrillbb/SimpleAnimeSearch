@@ -9,8 +9,21 @@ import Title from "./Title";
 import { connect } from "react-redux";
 import PropTypes from 'prop-types';
 import "./Main.css";
+import RegWindow from "./auth/RegWindow";
+import { useEffect } from "react";
+import { getToken, getUserByToken } from "../actions/myApiActions";
+import LoginWindow from "./auth/LoginWindow";
 
 function Main(props) {
+  const { getToken, getUserName } = props
+  useEffect(() => {
+    let cookie = document.cookie.split('=')
+    if (cookie[0] === 'token' && cookie[1].length > 0) {
+      getToken(cookie[1])
+      getUserName(cookie[1])
+    }
+  }, [getToken, getUserName])
+
   return (
     <div className="main">
       <BrowserRouter>
@@ -25,6 +38,12 @@ function Main(props) {
           </Route>
           <Route exact path="/SimpleAnimeSearch/categories">
             <Categories />
+          </Route>
+          <Route exact path="/SimpleAnimeSearch/registration">
+            <RegWindow />
+          </Route>
+          <Route exact path="/SimpleAnimeSearch/login">
+            <LoginWindow />
           </Route>
           <Route path={"/SimpleAnimeSearch/" + props.titleId}>
             <Title />
@@ -41,8 +60,15 @@ const mapStateToProps = (state) => {
   };
 };
 
+const mapDispatchToProps = dispatch => {
+  return {
+    getToken: (token) => dispatch(getToken(token)),
+    getUserName: (token) => dispatch(getUserByToken(token))
+  }
+}
+
 Main.propTypes = {
   titleId: PropTypes.string
 }
 
-export default connect(mapStateToProps, null)(Main);
+export default connect(mapStateToProps, mapDispatchToProps)(Main);

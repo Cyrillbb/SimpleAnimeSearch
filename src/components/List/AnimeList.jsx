@@ -10,7 +10,7 @@ import "./AnimeList.css";
 import { PropTypes } from "prop-types";
 
 function AnimeList(props) {  
-  useEffect(() => setLocalStr(props.favIds, props.favorites));
+  useEffect(() => setLocalStr(props.favs));
 
   return (
     <div style={{ backgroundColor: "#001f3f" }}>
@@ -24,12 +24,12 @@ function AnimeList(props) {
             props.results.map((item) => (
               <AnimeCard key={item.id} id={item.id}>
                 <h3 className="AnimeCard__h3">
-                  {props.favIds.indexOf(item.id) === -1 ? (
+                  {props.favs.find(i => i.id === item.id) === undefined ? (
                     <i
                       className="far fa-star"
                       style={{ color: "yellow" }}
                       onClick={() => {
-                        props.addFav(item.id, item);
+                        props.addFav(item);
                       }}
                     ></i>
                   ) : (
@@ -37,7 +37,7 @@ function AnimeList(props) {
                         className="fas fa-star"
                         style={{ color: "yellow" }}
                         onClick={() => {
-                          props.addFav(item.id, item);
+                          props.addFav(item);
                         }}
                       ></i>
                     )}
@@ -76,8 +76,7 @@ const mapStateToProps = (state) => {
   return {
     results: [...state.results.loadedData],
     url: state.results.url,
-    favorites: [...state.favorites.favs],
-    favIds: [...state.favorites.favIds],
+    favs: [...state.favorites.favs],    
     pending: state.results.pending,
     more: state.results.pendingMore,
     offset: state.results.offset,
@@ -87,7 +86,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     getMoreRes: (url, offset) => dispatch(getMore(url, offset)),
-    addFav: (id, item) => dispatch(toggleFav(id, item)),
+    addFav: (item) => dispatch(toggleFav(item)),
     getTit: (id) => dispatch(getTitle(id)),
   };
 };

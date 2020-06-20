@@ -7,7 +7,7 @@ import "./Favs.css";
 import { PropTypes } from "prop-types";
 
 function FavoriresList(props) {
-  useEffect(() => setLocalStr(props.favIds, props.favorites));
+  useEffect(() => setLocalStr(props.favorites));
 
   return (
     <div className="Favs">
@@ -31,7 +31,7 @@ function FavoriresList(props) {
                   className="fas fa-star"
                   style={{ color: "yellow" }}
                   onClick={() => {
-                    props.toggleFav(item.id, item);
+                    props.toggleFav(item);
                   }}
                 ></i>
               </td>
@@ -58,8 +58,7 @@ function FavoriresList(props) {
 
 const mapStateToProps = (state) => {
   return {
-    favorites: [...state.favorites.favs],
-    favIds: [...state.favorites.favIds],
+    favorites: [...state.favorites.favs],    
   };
 };
 

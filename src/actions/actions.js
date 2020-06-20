@@ -65,11 +65,10 @@ export const getMore = (url, offset) => {
     }
 }
 
-export const toggleFav = (id, item) => {
+export const toggleFav = (item) => {
     return {
         type: TOGGLE_FAVORITE,
-        payload: {
-            id: id,
+        payload: {            
             item: item
         }
     }
@@ -78,8 +77,7 @@ export const toggleFav = (id, item) => {
 export const getLocalStr = () => {
     return {
         type: GET_LOCAL_STR,
-        payload: {
-            favIds: JSON.parse(localStorage.getItem('ids')),
+        payload: {          
             favs: JSON.parse(localStorage.getItem('favs'))
         }
     }
