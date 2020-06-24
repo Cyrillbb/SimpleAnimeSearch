@@ -1,6 +1,6 @@
-import { GET_CATEGORIES } from "../actions/actions"
+import { GET_CATEGORIES } from "../actions/actions";
 
-const initialState = []
+const initialState = [];
 
 export const CategoriesFetcher = (state = initialState, action) => {
     switch (action.type) {
@@ -11,4 +11,4 @@ export const CategoriesFetcher = (state = initialState, action) => {
         default:
             return state
     }
-}
+};

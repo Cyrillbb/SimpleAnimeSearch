@@ -1,9 +1,9 @@
 import { myApiEND } from './../constants';
 
-export const GET_TOKEN = "GET_TOKEN"
-export const GET_USER_NAME = 'GET_USER_NAME'
-export const GET_COMMENTS = 'GET_COMMENTS'
-export const GET_FAVORITES = 'GET_FAVORITES'
+export const GET_TOKEN = "GET_TOKEN";
+export const GET_USER_NAME = 'GET_USER_NAME';
+export const GET_COMMENTS = 'GET_COMMENTS';
+export const GET_FAVORITES = 'GET_FAVORITES';
 
 
 
@@ -12,7 +12,7 @@ export const getToken = (token) => {
         type: GET_TOKEN,
         payload: token
     }
-}
+};
 
 export const getUserByToken = (token) => {
     return async dispatch => {
@@ -25,17 +25,17 @@ export const getUserByToken = (token) => {
                     'Authorization': `Bearer ${token}`
                 }
             })
-            const name = await resp.json()
+            const name = await resp.json();
             dispatch({
                 type: GET_USER_NAME,
                 payload: name.userName
             })
         }
         catch (err) {
-            console.log(new Error(err))
+            console.log(new Error(err));
         }
     }
-}
+};
 
 export const getComments = (id) => {
     return async dispatch => {
@@ -47,17 +47,17 @@ export const getComments = (id) => {
                     'Accept': 'application/json'
                 }
             })
-            const data = await resp.json()
+            const data = await resp.json();
             dispatch ({
                 type: GET_COMMENTS,
                 payload: data.comments
             })
         }
         catch (err) {
-            console.log(new Error(err))
+            console.log(new Error(err));
         }
     }
-}
+};
 
 export const getFavorites = (token) => {
     return async dispatch => {
@@ -69,14 +69,14 @@ export const getFavorites = (token) => {
                     'Authorization': `Bearer ${token}`
                 }
             })
-            const favs = await resp.json()
+            const favs = await resp.json();
             dispatch({
                 type: GET_FAVORITES,
                 payload: favs.favs
             })
         }
         catch (err) {
-            console.log(new Error(err))
+            console.log(new Error(err));
         }
     }
-}
+};

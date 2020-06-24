@@ -7,22 +7,9 @@ import { getTitle } from "./../../actions/actions";
 import "./AnimeList.css";
 import { PropTypes } from "prop-types";
 import { getComments } from "../../actions/myApiActions";
-import { myApiEND } from './../../constants';
-import { useEffect } from "react";
+
 
 function AnimeList(props) {
-  useEffect(() => {
-    fetch(myApiEND + 'saveFavs', {
-      method: 'POST',
-      mode: 'cors',
-      headers: {
-        'Authorization': `Bearer ${props.token}`,
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ favs: props.favs })
-    })
-  }, [props.favs, props.token])
-
   return (
     <div style={{ backgroundColor: "#001f3f" }}>
       <div className="AnimeList">
@@ -39,9 +26,8 @@ function AnimeList(props) {
                     <i
                       className="far fa-star"
                       style={{ color: "yellow" }}
-                      onClick={() => {
-                        props.addFav(item);
-
+                      onClick={() => {                        
+                        props.addFav(item, props.token, props.favs)
                       }}
                     ></i>
                   ) : (
@@ -49,7 +35,7 @@ function AnimeList(props) {
                         className="fas fa-star"
                         style={{ color: "yellow" }}
                         onClick={() => {
-                          props.addFav(item);
+                          props.addFav(item, props.token, props.favs)
                         }}
                       ></i>
                     )}
@@ -99,7 +85,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     getMoreRes: (url, offset) => dispatch(getMore(url, offset)),
-    addFav: (item) => dispatch(toggleFav(item)),
+    addFav: (item, token, favs) => dispatch(toggleFav(item, token, favs)),
     getTit: (id) => dispatch(getTitle(id)),
     getComments: (id) => dispatch(getComments(id))
   };

@@ -6,10 +6,10 @@ import { myApiEND } from './../../constants';
 import { getComments } from '../../actions/myApiActions';
 
 function PostForm(props) {
-    const [comment, setComment] = useState('')
+    const [comment, setComment] = useState('');
 
     const handleSubmit = (e) => {
-        e.preventDefault()
+        e.preventDefault();
         if (props.token.length > 0 && props.name.length > 0) {
             try {
                 fetch(myApiEND + 'comment', {
@@ -25,11 +25,12 @@ function PostForm(props) {
                         from: props.name
                     })
                 }).then(() => {
-                    props.getComments(props.id)
+                    props.getComments(props.id);
+                    setComment('');
                 })
             }
             catch (err) {
-                console.log(new Error(err))
+                console.log(new Error(err));
             }
         }
     }

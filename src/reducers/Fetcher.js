@@ -1,4 +1,4 @@
-import { GET_MORE, GET_ANIME } from "../actions/actions"
+import { GET_MORE, GET_ANIME } from "../actions/actions";
 
 
 const initialState = {
@@ -7,7 +7,7 @@ const initialState = {
     pending: true,
     pendingMore: false,
     offset: 0,
-}
+};
 
 export const fetcher = (state = initialState, action) => {
     switch (action.type) {
@@ -32,4 +32,4 @@ export const fetcher = (state = initialState, action) => {
         default:
             return state
     }
-}
+};

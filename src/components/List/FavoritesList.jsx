@@ -4,21 +4,9 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import "./Favs.css";
 import { PropTypes } from "prop-types";
-import { useEffect } from "react";
-import { myApiEND } from './../../constants';
+import { getComments } from './../../actions/myApiActions';
 
-function FavoriresList(props) {  
-  useEffect(() => {
-    fetch(myApiEND + 'saveFavs', {
-      method: 'POST',
-      mode: 'cors',
-      headers: {
-        'Authorization': `Bearer ${props.token}`,
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ favs: props.favorites })
-    })
-  }, [props.favorites, props.token])
+function FavoriresList(props) {
 
   return (
     <div className="Favs">
@@ -42,7 +30,7 @@ function FavoriresList(props) {
                   className="fas fa-star"
                   style={{ color: "yellow" }}
                   onClick={() => {
-                    props.toggleFav(item);
+                    props.addFav(item, props.token, props.favorites)
                   }}
                 ></i>
               </td>
@@ -51,7 +39,7 @@ function FavoriresList(props) {
                   className="Favs__card__link"
                   to={"/SimpleAnimeSearch/" + item.id}
                 >
-                  <h3 className="cardH" onClick={() => props.getTit(item.id)}>
+                  <h3 className="cardH" onClick={() => {props.getTit(item.id); props.getComments(item.id)}}>
                     {item.attributes.canonicalTitle}
                   </h3>
                 </Link>
@@ -76,8 +64,9 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    toggleFav: (id) => dispatch(toggleFav(id)),
+    addFav: (item, token, favs) => dispatch(toggleFav(item, token, favs)),
     getTit: (id) => dispatch(getTitle(id)),
+    getComments: (id) => dispatch(getComments(id))
   };
 };
 

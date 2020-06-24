@@ -4,39 +4,27 @@ import { connect } from "react-redux";
 import { useEffect } from "react";
 import "./Title.css";
 import { PropTypes } from "prop-types";
-import { YOUTUBE_URL, myApiEND } from './../constants';
+import { YOUTUBE_URL } from './../constants';
 import { getComments } from "../actions/myApiActions";
 import CommentsSec from "./commentsSec/CommentsSec";
 
 function Title(props) {
-  const [trailer, setTrailer] = useState(false) 
+  const [trailer, setTrailer] = useState(false)
   useEffect(() => {
     if (!props.titleId) {
       let id = window.location.pathname.split("/").pop();
       props.getTit(id);
-      props.getComments(id)
-    }    
-  }, [props]); 
-  
-  useEffect(() => {
-    fetch(myApiEND + 'saveFavs', {
-      method: 'POST',
-      mode: 'cors',
-      headers: {
-        'Authorization': `Bearer ${props.token}`,
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ favs: props.favorites })
-    })
-  }, [props.favorites, props.token])
+      props.getComments(id);
+    }
+  }, [props]);
 
   const handleWatch = () => {
     setTrailer(true)
-  }
+  };
 
   const handleHide = () => {
     setTrailer(false)
-  }
+  };
 
   return (
     <div className="TitleBox">
@@ -59,7 +47,7 @@ function Title(props) {
                     className="far fa-star"
                     style={{ color: "yellow" }}
                     onClick={() => {
-                      props.addFav(props.title);
+                      props.addFav(props.title, props.token, props.favorites);
                     }}
                   ></i>
                 ) : (
@@ -67,7 +55,7 @@ function Title(props) {
                       className="fas fa-star"
                       style={{ color: "yellow" }}
                       onClick={() => {
-                        props.addFav(props.title);
+                        props.addFav(props.title, props.token, props.favorites);
                       }}
                     ></i>
                   )}
@@ -94,7 +82,7 @@ function Title(props) {
               </div> : <div></div>}
           </div>
         )}
-        <CommentsSec />
+      <CommentsSec />
     </div>
   );
 }
@@ -112,7 +100,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    addFav: (id, item) => dispatch(toggleFav(id, item)),
+    addFav: (item, token, favs) => dispatch(toggleFav(item, token, favs)),
     getTit: (id) => dispatch(getTitle(id)),
     getComments: (id) => dispatch(getComments(id))
   };

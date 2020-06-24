@@ -4,15 +4,17 @@ import { getToken } from '../../actions/myApiActions';
 import { connect } from 'react-redux';
 import { myApiEND } from './../../constants';
 import './RegWindow.css'
+import { Link } from 'react-router-dom';
+
 
 
 function RegWindow(props) {
-    const [nickname, setNickname] = useState('')
-    const [password, setPassword] = useState('')
-    const [password2, setPassword2] = useState('')
+    const [nickname, setNickname] = useState('');
+    const [password, setPassword] = useState('');
+    const [password2, setPassword2] = useState('');
 
     const handleSubmit = async (e) => {
-        e.preventDefault()
+        e.preventDefault();
         if (nickname.length > 0 && password.length > 0 && password === password2) {
             try {
                 const resp = await fetch(myApiEND + 'createUser', {
@@ -22,7 +24,7 @@ function RegWindow(props) {
                     },
                     body: JSON.stringify({ user: nickname, pw: password2 })
                 })
-                const token = await resp.json()
+                const token = await resp.json();
                 if (!token.token) {
                     alert('123')
                 }
@@ -32,7 +34,7 @@ function RegWindow(props) {
                 }
             }
             catch (err) {
-                console.log(new Error(err))
+                console.log(new Error(err));
             }
         }
     }
@@ -45,8 +47,9 @@ function RegWindow(props) {
                 <label htmlFor="password">Enter your password</label>
                 <input className='RegWindow__input' type="password" placeholder='password...' id='password' onChange={e => setPassword(e.target.value)} required />
                 <label htmlFor="password2">Repeat your password</label>
-                <input className='RegWindow__input' type="password" placeholder='repeat password...' id='password2' onChange={e => setPassword2(e.target.value)} required />
+                <input className='RegWindow__input' type="password" placeholder='repeat password...' id='password2' onChange={e => setPassword2(e.target.value)} required />             
                 <button className='RegWindow__button' type='submit'>Submit</button>
+                <Link to='/SimpleAnimeSearch/login' className='RegWindow__button'>Back</Link>
             </form>
         </div>
     )

@@ -16,4 +16,4 @@ export const rootReducer = combineReducers({
     token: tokenGetter,
     userName: userNameGetter,
     comments: commentsGetter,
-})
+});

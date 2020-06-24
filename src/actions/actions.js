@@ -1,15 +1,16 @@
 import { queryParts, fetchHeader, apiEND } from './../constants';
+import { saveFavsToServ } from '../utility';
 
-export const GET_MORE = 'GET_MORE'
-export const GET_CATEGORIES = 'GET_CATEGORIES'
-export const TOGGLE_FAVORITE = 'TOGGLE_FAVORITE'
-export const GET_FAV = 'GET_FAV'
-export const GET_ANIME = 'GET_ANIME'
-export const GET_TITLE = 'GET_TITLE'
-export const GET_LOCAL_STR = 'GET_LOCAL_STR'
+export const GET_MORE = 'GET_MORE';
+export const GET_CATEGORIES = 'GET_CATEGORIES';
+export const TOGGLE_FAVORITE = 'TOGGLE_FAVORITE';
+export const GET_FAV = 'GET_FAV';
+export const GET_ANIME = 'GET_ANIME';
+export const GET_TITLE = 'GET_TITLE';
+export const GET_LOCAL_STR = 'GET_LOCAL_STR';
 
 export const getAnime = (query) => {
-    const url = queryParts.apiURL + query + apiEND
+    const url = queryParts.apiURL + query + apiEND;
     return async dispatch => {
         dispatch({
             type: GET_ANIME,
@@ -20,7 +21,7 @@ export const getAnime = (query) => {
             }
         })
         try {
-            const response = await fetch(url, fetchHeader)
+            const response = await fetch(url, fetchHeader);
             const json = await response.json();
             dispatch({
                 type: GET_ANIME,
@@ -33,10 +34,10 @@ export const getAnime = (query) => {
             })
         }
         catch (e) {
-            console.error(e)
+            console.error(e);
         }
     }
-}
+};
 
 export const getMore = (url, offset) => {
     return async dispatch => {
@@ -49,8 +50,8 @@ export const getMore = (url, offset) => {
             }
         })
         try {
-            const response = await fetch(url + queryParts.pageOff + offset, fetchHeader)
-            const json = await response.json()
+            const response = await fetch(url + queryParts.pageOff + offset, fetchHeader);
+            const json = await response.json();
             dispatch({
                 type: GET_MORE,
                 payload: {
@@ -61,33 +62,43 @@ export const getMore = (url, offset) => {
                 }
             })
         }
-        catch (e) { console.error(e) }
+        catch (e) { console.error(e) };
     }
-}
+};
 
-export const toggleFav = (item) => {
-    return {
-        type: TOGGLE_FAVORITE,
-        payload: {            
-            item: item
+export const toggleFav = (item, token, favs) => {
+    const newFavs = favs;
+    if (!favs.find(i => i.id === item.id)) {
+        newFavs.push(item);
+        saveFavsToServ(token, newFavs);
+        return {
+            type: TOGGLE_FAVORITE,
+            payload: newFavs
         }
     }
-}
+    else {
+        saveFavsToServ(token, newFavs.filter(i => i.id !== item.id));
+        return {
+            type: TOGGLE_FAVORITE,
+            payload: newFavs.filter(i => i.id !== item.id)
+        }
+    }
+};
 
 export const getLocalStr = () => {
     return {
         type: GET_LOCAL_STR,
-        payload: {          
+        payload: {
             favs: JSON.parse(localStorage.getItem('favs'))
         }
     }
-}
+};
 
 export const getCateg = () => {
     return async dispatch => {
         try {
-            const response = await fetch(queryParts.categories, fetchHeader)
-            const json = await response.json()
+            const response = await fetch(queryParts.categories, fetchHeader);
+            const json = await response.json();
             dispatch({
                 type: GET_CATEGORIES,
                 payload: json.data
@@ -97,7 +108,7 @@ export const getCateg = () => {
             console.error(e)
         }
     }
-}
+};
 
 export const getTitle = (id) => {
     return async dispatch => {
@@ -110,8 +121,8 @@ export const getTitle = (id) => {
             }
         })
         try {
-            const response = await fetch(queryParts.apiURL + queryParts.idSearch + id + queryParts.filter + queryParts.youtFilter, fetchHeader)
-            const json = await response.json()
+            const response = await fetch(queryParts.apiURL + queryParts.idSearch + id + queryParts.filter + queryParts.youtFilter, fetchHeader);
+            const json = await response.json();
             dispatch({
                 type: GET_TITLE,
                 payload: {
@@ -122,7 +133,7 @@ export const getTitle = (id) => {
             })
         }
         catch (e) {
-            throw new Error(e)
+            throw new Error(e);
         }
     }
-}
+};

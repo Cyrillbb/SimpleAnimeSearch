@@ -15,15 +15,21 @@ import { getToken, getUserByToken, getFavorites } from "../actions/myApiActions"
 import LoginWindow from "./auth/LoginWindow";
 
 function Main(props) {
-  const { getToken, getUserName, getFavs } = props
+  const { getToken, getUserName, getFavs, token } = props;
   useEffect(() => {
-    let cookie = document.cookie.split('=')
+    let cookie = document.cookie.split('=');
     if (cookie[0] === 'token' && cookie[1].length > 0) {
-      getToken(cookie[1])
-      getUserName(cookie[1])
-      getFavs(cookie[1])
+      getToken(cookie[1]);
+      getUserName(cookie[1]);
     }
-  }, [getToken, getUserName, getFavs])
+  }, [getToken, getUserName]);
+
+  useEffect(() => {
+    if (token.length > 0) {
+      getFavs(token);
+    }
+  }, [token, getFavs]);
+
 
   return (
     <div className="main">
@@ -58,6 +64,9 @@ function Main(props) {
 const mapStateToProps = (state) => {
   return {
     titleId: state.title.id,
+    name: state.userName,
+    favs: state.favorites,
+    token: state.token,
   };
 };
 

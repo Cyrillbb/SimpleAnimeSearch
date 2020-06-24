@@ -7,7 +7,7 @@ import "./ButtonBar.css";
 import { PropTypes } from "prop-types";
 
 function ButtonBar(props) {
-  const searchRef = useRef(null)
+  const searchRef = useRef(null);
   return (
     <div className="ButtonBar" id="btnBar">
       <input

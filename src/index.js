@@ -9,7 +9,7 @@ import logger from 'redux-logger';
 import thunk from 'redux-thunk';
 import Main from './Components/Main';
 
-const store = createStore(rootReducer, applyMiddleware(logger, thunk))
+const store = createStore(rootReducer, applyMiddleware(logger, thunk));
 
 ReactDOM.render(
   <React.StrictMode>

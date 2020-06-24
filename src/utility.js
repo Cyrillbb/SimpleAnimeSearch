@@ -1,4 +1,7 @@
+import { myApiEND } from './constants';
+
 export const debounce = (func, delay) => {
+
   let inDebounce
   return function () {
     const context = this
@@ -8,11 +11,14 @@ export const debounce = (func, delay) => {
   }
 }
 
-export const setLocalStr = (favs) => {
-  if (favs.length > 0) {    
-    localStorage.setItem('favs', JSON.stringify(favs))
-  }
-  else {
-    localStorage.clear()
-  }
+export const saveFavsToServ = (token, favs) => {
+  fetch(myApiEND + 'saveFavs', {
+    method: 'POST',
+    mode: 'cors',
+    headers: {
+      'Authorization': `Bearer ${token}`,
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ favs: favs })
+  })
 }

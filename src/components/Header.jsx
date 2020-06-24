@@ -11,9 +11,6 @@ function Header(props) {
   useEffect(() => {
     props.getPop();
     props.getCat();
-    if (localStorage.getItem("favs")) {
-      props.getLcStr();
-    }
   }, [props]);
 
   const navRef = useRef(null)
@@ -28,11 +25,23 @@ function Header(props) {
     }
   };
 
+  const handleLogout = () => {    
+      document.cookie = 'token=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+      window.location.reload();
+  }
+
   return (
     <div className="header">
       <h3 className="header__h3">
         Simple Anime Search
         <i className="fas fa-bars" id="bars" onClick={handleHide}></i>
+        {props.name.length === 0 ?
+          <Link to='/SimpleAnimeSearch/login' className='header__Link'>
+            Login
+          </Link> :
+          <button className='header__Link' onClick={handleLogout}>
+            {props.name} Logout
+          </button>}
       </h3>
       <nav className="header__nav" id="nav" ref={navRef}>
         <Link className="header__nav__Link" to="/SimpleAnimeSearch">
@@ -49,6 +58,12 @@ function Header(props) {
   );
 }
 
+const mapStateToProps = state => {
+  return {
+    name: state.userName,
+  }
+};
+
 const mapDispatchToProps = (dispatch) => {
   return {
     getPop: () => dispatch(getAnime(queryParts.mostPop)),
@@ -63,4 +78,4 @@ Header.propTypes = {
   getCat: PropTypes.func,
 };
 
-export default connect(null, mapDispatchToProps)(Header);
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

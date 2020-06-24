@@ -13,23 +13,19 @@ export const queryParts = {
     categSearch: 'filter[categories]=',
     idFilter: 'https://kitsu.io/api/edge/anime?&filter[id]=',
     youtFilter: ',youtubeVideoId'
-}
+};
 
-export const myApiPaths = {
-    
-}
+export const myApiEND = 'http://localhost:5000/';
 
-export const myApiEND = 'http://localhost:5000/'
+export const apiEND = queryParts.pageLim + queryParts.resultsNum + queryParts.filter;
 
-export const apiEND = queryParts.pageLim + queryParts.resultsNum + queryParts.filter
-
-export const YOUTUBE_URL = 'https://www.youtube.com/embed/'
+export const YOUTUBE_URL = 'https://www.youtube.com/embed/';
 
 export const sortTypes = {
     byRating: 'topRated',
     byPop: 'mostPop',
     byTopAir: 'topAir'
-}
+};
 
 export const fetchHeader = {
     method: 'GET',
@@ -37,4 +33,4 @@ export const fetchHeader = {
         'Accept': 'application/vnd.api+json',
         'Content-Type': 'application/vnd.api+json'
     }
-}
+};
