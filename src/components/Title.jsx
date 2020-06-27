@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React, { useState} from "react";
 import { toggleFav, getTitle } from "./../actions/actions";
 import { connect } from "react-redux";
 import { useEffect } from "react";
 import "./Title.css";
 import { PropTypes } from "prop-types";
 import { YOUTUBE_URL } from './../constants';
-import { getComments } from "../actions/myApiActions";
+import { getComments, getError } from "../actions/myApiActions";
 import CommentsSec from "./commentsSec/CommentsSec";
 
 function Title(props) {
@@ -47,7 +47,12 @@ function Title(props) {
                     className="far fa-star"
                     style={{ color: "yellow" }}
                     onClick={() => {
-                      props.addFav(props.title, props.token, props.favorites);
+                      if (props.token.length === 0) {
+                        props.getError('Login to manage favorites');
+                      }
+                      else {
+                        props.addFav(props.title, props.token, props.favorites);
+                      }
                     }}
                   ></i>
                 ) : (
@@ -102,7 +107,8 @@ const mapDispatchToProps = (dispatch) => {
   return {
     addFav: (item, token, favs) => dispatch(toggleFav(item, token, favs)),
     getTit: (id) => dispatch(getTitle(id)),
-    getComments: (id) => dispatch(getComments(id))
+    getComments: (id) => dispatch(getComments(id)),
+    getError: (msg) => dispatch(getError(msg)),
   };
 };
 
@@ -114,6 +120,10 @@ Title.propTypes = {
   titleId: PropTypes.string,
   addFav: PropTypes.func,
   getTit: PropTypes.func,
+  getComments: PropTypes.func,
+  comments: PropTypes.array,
+  token: PropTypes.string,
+  getError: PropTypes.func
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Title);

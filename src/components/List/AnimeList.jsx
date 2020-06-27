@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import { getTitle } from "./../../actions/actions";
 import "./AnimeList.css";
 import { PropTypes } from "prop-types";
-import { getComments } from "../../actions/myApiActions";
+import { getComments, getError } from "../../actions/myApiActions";
 
 
 function AnimeList(props) {
@@ -26,8 +26,13 @@ function AnimeList(props) {
                     <i
                       className="far fa-star"
                       style={{ color: "yellow" }}
-                      onClick={() => {                        
-                        props.addFav(item, props.token, props.favs)
+                      onClick={() => {
+                        if (props.token.length === 0) {
+                          props.getError('Login to manage favourites');
+                        }
+                        else {
+                          props.addFav(item, props.token, props.favs);
+                        }
                       }}
                     ></i>
                   ) : (
@@ -87,7 +92,8 @@ const mapDispatchToProps = (dispatch) => {
     getMoreRes: (url, offset) => dispatch(getMore(url, offset)),
     addFav: (item, token, favs) => dispatch(toggleFav(item, token, favs)),
     getTit: (id) => dispatch(getTitle(id)),
-    getComments: (id) => dispatch(getComments(id))
+    getComments: (id) => dispatch(getComments(id)),
+    getError: (msg) => dispatch(getError(msg)),
   };
 };
 

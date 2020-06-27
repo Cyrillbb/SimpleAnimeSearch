@@ -132,8 +132,8 @@ export const getTitle = (id) => {
                 }
             })
         }
-        catch (e) {
-            throw new Error(e);
+        catch (err) {
+            console.log(new Error(err))
         }
     }
 };

@@ -6,6 +6,7 @@ import { TitleFetcher } from './TitleFetcher';
 import { tokenGetter } from './TokenGetter';
 import { userNameGetter } from './userNameGetter';
 import { commentsGetter } from './commentsGetter';
+import { errorHandler } from './ErrorHandler';
 
 
 export const rootReducer = combineReducers({
@@ -16,4 +17,5 @@ export const rootReducer = combineReducers({
     token: tokenGetter,
     userName: userNameGetter,
     comments: commentsGetter,
+    error: errorHandler,
 });

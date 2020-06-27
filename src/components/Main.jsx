@@ -13,9 +13,14 @@ import RegWindow from "./auth/RegWindow";
 import { useEffect } from "react";
 import { getToken, getUserByToken, getFavorites } from "../actions/myApiActions";
 import LoginWindow from "./auth/LoginWindow";
+import { useState } from "react";
+import MessageModal from './messageModal/MessageModal';
 
 function Main(props) {
-  const { getToken, getUserName, getFavs, token } = props;
+  const { getToken, getUserName, getFavs, token, error } = props;
+
+  const [errModal, setErrModal] = useState(false);
+
   useEffect(() => {
     let cookie = document.cookie.split('=');
     if (cookie[0] === 'token' && cookie[1].length > 0) {
@@ -30,11 +35,21 @@ function Main(props) {
     }
   }, [token, getFavs]);
 
+  useEffect(() => {
+    if (error.length > 0) {
+      setErrModal(true);
+    }
+    else {
+      setErrModal(false);
+    }
+  }, [error]);
+
 
   return (
     <div className="main">
       <BrowserRouter>
         <Header />
+        {errModal ? <MessageModal /> : undefined}
         <Switch>
           <Route exact path="/SimpleAnimeSearch">
             <ButtonBar />
@@ -67,6 +82,7 @@ const mapStateToProps = (state) => {
     name: state.userName,
     favs: state.favorites,
     token: state.token,
+    error: state.error,
   };
 };
 

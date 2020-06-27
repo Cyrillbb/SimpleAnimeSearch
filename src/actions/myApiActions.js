@@ -4,6 +4,7 @@ export const GET_TOKEN = "GET_TOKEN";
 export const GET_USER_NAME = 'GET_USER_NAME';
 export const GET_COMMENTS = 'GET_COMMENTS';
 export const GET_FAVORITES = 'GET_FAVORITES';
+export const GET_ERROR = 'GET_ERROR';
 
 
 
@@ -78,5 +79,12 @@ export const getFavorites = (token) => {
         catch (err) {
             console.log(new Error(err));
         }
+    }
+};
+
+export const getError = (msg) => {
+    return {
+        type: GET_ERROR,
+        payload: msg,
     }
 };

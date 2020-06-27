@@ -1,26 +1,45 @@
-.commenstSec {
-    width: 100%;
-    margin: 0 auto;
-    background-color: black;
+.frame {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(32, 64, 93, 0.678);
 }
 
-.commentsSec__btn {
-    width: 60%;
+.messageModal {
+    background-color: black;
+    color: white;
+    width: 20%;
+    margin: 15px auto;
+    margin-top: 10%;
+    border-radius: 0.4em;
+}
+
+.messageModal__body {
+    display: block;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin: 10px;
+}
+
+.messageModal__body:hover {
+    color: red;
+}
+
+.messageModal__btn {
     color: #fff !important;
     text-decoration: none;
     background: #000000;
     padding: 10px;
-    margin-bottom: 10px;
-    margin-top: 10px;
     border-radius: 5px;
     display: inline-block;
     border: none;
     transition: all 0.4s ease 0s;
     font-size: large;
     cursor: pointer;
+    margin-bottom: 10px;
 }
 
-.commentsSec__btn:hover {
+.messageModal__btn:hover {
     background: #ff0000;
     letter-spacing: 1px;
     -webkit-box-shadow: 0px 5px 40px -10px rgba(0, 0, 0, 0.57);

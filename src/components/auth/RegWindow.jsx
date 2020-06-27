@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
-import { getToken } from '../../actions/myApiActions';
+import { getToken, getError } from '../../actions/myApiActions';
 import { connect } from 'react-redux';
 import { myApiEND } from './../../constants';
 import './RegWindow.css'
@@ -26,7 +26,7 @@ function RegWindow(props) {
                 })
                 const token = await resp.json();
                 if (!token.token) {
-                    alert('123')
+                    props.getError(token.message)
                 }
                 else {
                     props.getToken(token.token)
@@ -36,6 +36,9 @@ function RegWindow(props) {
             catch (err) {
                 console.log(new Error(err));
             }
+        }
+        else if(password !== password2) {
+            props.getError('password entries should match')
         }
     }
 
@@ -57,7 +60,8 @@ function RegWindow(props) {
 
 const mapDispatchToProps = dispatch => {
     return {
-        getToken: (token) => dispatch(getToken(token))
+        getToken: (token) => dispatch(getToken(token)),
+        getError: (msg) => dispatch(getError(msg)),
     }
 }
 

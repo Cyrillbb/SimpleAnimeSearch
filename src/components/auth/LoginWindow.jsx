@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import { myApiEND } from './../../constants';
-import { getToken, getUserByToken } from '../../actions/myApiActions';
+import { getToken, getUserByToken, getError } from '../../actions/myApiActions';
 import { connect } from 'react-redux';
 import './LoginWindow.css'
 import { Link } from 'react-router-dom';
@@ -25,9 +25,14 @@ function LoginWindow(props) {
                 })
             })
             const token = await resp.json();
-            props.getToken(token.token);
-            props.getUserName(token.token);
-            document.cookie = `token=${token.token}`;
+            if (!token.token) {
+                props.getError(token.message);
+            }
+            else {
+                props.getToken(token.token);
+                props.getUserName(token.token);
+                document.cookie = `token=${token.token}`;
+            }
         }
         catch (err) {
             console.log(new Error(err));
@@ -40,8 +45,8 @@ function LoginWindow(props) {
                 <label htmlFor="loginName">Enter your nickname</label>
                 <input className='LogForm__input' type="text" id='loginName' placeholder='nickname...' onChange={e => setName(e.target.value)} required />
                 <label htmlFor="loginPw">Enter your password</label>
-                <input className='LogForm__input' type="password" id='loginPw' placeholder='password...' onChange={e => setPw(e.target.value)} required />               
-                    <button type='submit' className='LogForm__btn'>Login</button>                
+                <input className='LogForm__input' type="password" id='loginPw' placeholder='password...' onChange={e => setPw(e.target.value)} required />
+                <button type='submit' className='LogForm__btn'>Login</button>
                 <Link to='/SimpleAnimeSearch/registration' className='LogForm__btn'> Create account</Link>
             </form>
         </div>
@@ -51,7 +56,8 @@ function LoginWindow(props) {
 const mapDispatchToProps = dispatch => {
     return {
         getToken: (token) => dispatch(getToken(token)),
-        getUserName: (token) => dispatch(getUserByToken(token))
+        getUserName: (token) => dispatch(getUserByToken(token)),
+        getError: (msg) => dispatch(getError(msg))
     }
 }
 

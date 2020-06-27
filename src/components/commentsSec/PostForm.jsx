@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import './PostForm.css'
 import { useState } from 'react';
 import { myApiEND } from './../../constants';
-import { getComments } from '../../actions/myApiActions';
+import { getComments, getError } from '../../actions/myApiActions';
 
 function PostForm(props) {
     const [comment, setComment] = useState('');
@@ -33,6 +33,9 @@ function PostForm(props) {
                 console.log(new Error(err));
             }
         }
+        else {
+            props.getError('Login to post comments');
+        }
     }
 
     return (
@@ -57,7 +60,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        getComments: (id) => dispatch(getComments(id))
+        getComments: (id) => dispatch(getComments(id)),
+        getError: (msg) => dispatch(getError(msg)),
     }
 }
 
