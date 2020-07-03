@@ -6,14 +6,19 @@ import { getAnime, getLocalStr, getCateg } from "./../actions/actions";
 import { queryParts } from "./../constants";
 import "./Header.css";
 import { PropTypes } from "prop-types";
+import { useState } from "react";
+import Dropdown from "./dropDown";
 
 function Header(props) {
+  const [showDropDown, setDropDown] = useState(false)
+
   useEffect(() => {
     props.getPop();
     props.getCat();
   }, [props]);
 
-  const navRef = useRef(null)
+  const navRef = useRef(null);
+
 
   const handleHide = () => {
     if (
@@ -25,9 +30,8 @@ function Header(props) {
     }
   };
 
-  const handleLogout = () => {    
-      document.cookie = 'token=; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
-      window.location.reload();
+  const handleDropDown = () => {
+    showDropDown ? setDropDown(false) : setDropDown(true)
   }
 
   return (
@@ -37,10 +41,12 @@ function Header(props) {
         <i className="fas fa-bars" id="bars" onClick={handleHide}></i>
         {props.name.length === 0 ?
           <Link to='/SimpleAnimeSearch/login' className='header__Link'>
-            Login
+            <span className='heder__Link__txt'>Login</span>
           </Link> :
-          <button className='header__Link' onClick={handleLogout}>
-            {props.name} Logout
+          <button className='header__Link' onClick={handleDropDown}>
+            <span className='heder__Link__txt'>{props.name}</span>
+            <i className="fas fa-angle-down" style={{ margin: '5px' }}></i>
+            {showDropDown ? <Dropdown /> : undefined}
           </button>}
       </h3>
       <nav className="header__nav" id="nav" ref={navRef}>

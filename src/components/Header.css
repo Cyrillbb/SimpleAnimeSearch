@@ -53,11 +53,11 @@
     color: #fff !important;
     text-decoration: none;
     font-size: large;
-    background: #000000;    
-    border-radius: 5px;
+    padding: 0px;
+    background: #000000;
     display: inline-block;
     position: absolute;
-    right: 30px;
+    right: 0px;
     height: 30px;
     vertical-align: middle;
     border: none;
@@ -66,14 +66,14 @@
 }
 
 .header__Link:hover {
-    background: #ff0000;
-    letter-spacing: 1px;
-    -webkit-box-shadow: 0px 5px 40px -10px rgba(0, 0, 0, 0.57);
-    -moz-box-shadow: 0px 5px 40px -10px rgba(0, 0, 0, 0.57);
+    background: #ff0000;    
     box-shadow: 5px 40px -10px rgba(0, 0, 0, 0.57);
     transition: all 0.4s ease 0s;
 }
 
+.heder__Link__txt {
+    display: inline-block;
+}
 
 @media only screen and (max-width: 600px) {
     .header__h3 {
@@ -81,7 +81,7 @@
         flex-direction: row;
         justify-content: space-between;
         background: black;
-    }    
+    }
     #bars {
         color: white;
         display: block;
@@ -101,5 +101,8 @@
         background-color: black;
         font-size: large;
         background-color: black;
+    }
+    .header__Link {
+        right: 30px;
     }
 }
