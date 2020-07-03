@@ -9,6 +9,7 @@ function CommentsSec(props) {
     const { comments } = props
     const [counter, setCounter] = useState(5);
     const [reversed, setReversed] = useState([]);
+    
     useEffect(() => {
         const clientComments = comments;
         setReversed(clientComments.reverse())
