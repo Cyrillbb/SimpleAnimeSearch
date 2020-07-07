@@ -9,8 +9,7 @@ function Dropdown() {
     }
 
     return (
-        <div className='dropDown'>
-            <button className='dropDown__btn'>Settings(wip)</button>
+        <div className='dropDown'>       
             <button className='dropDown__btn' onClick={handleLogout}>Logout</button>
         </div>
     )
