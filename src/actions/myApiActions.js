@@ -43,13 +43,12 @@ export const getComments = (id) => {
         try {
             const resp = await fetch(myApiEND + 'getComments/' + id, {
                 method: 'GET',
-                mode: 'cors',
                 headers: {
                     'Accept': 'application/json'
                 }
             })
             const data = await resp.json();
-            dispatch ({
+            dispatch({
                 type: GET_COMMENTS,
                 payload: data.comments
             })
@@ -65,7 +64,6 @@ export const getFavorites = (token) => {
         try {
             const resp = await fetch(myApiEND + 'getMyFavs', {
                 method: 'GET',
-                mode: 'cors',
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }

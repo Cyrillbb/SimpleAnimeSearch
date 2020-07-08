@@ -11,6 +11,7 @@ function Categories(props) {
         <div className="Cats">
             {props.categ.map(item =>
                 <Link className='Cats__link' key={item.id} to='/SimpleAnimeSearch'
+                title={item.attributes.description}
                     onClick={
                         () => props.search(queryParts.categSearch + item.attributes.title + queryParts.mostPop)}>
                     {item.attributes.title}</Link>
