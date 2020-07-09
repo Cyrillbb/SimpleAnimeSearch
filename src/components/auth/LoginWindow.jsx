@@ -33,7 +33,7 @@ function LoginWindow(props) {
             else {
                 props.getToken(token.token);
                 props.getUserName(token.token);
-                document.cookie = `token=${token.token}`;
+                document.cookie = `token=${token.token}; path=/SimpleAnimeSearch`;
                 history.push('/SimpleAnimeSearch')
             }
         }
