@@ -4,6 +4,7 @@ import './PostForm.css'
 import { useState } from 'react';
 import { myApiEND } from './../../constants';
 import { getComments, getError } from '../../actions/myApiActions';
+import { PropTypes } from 'prop-types';
 
 function PostForm(props) {
     const [comment, setComment] = useState('');
@@ -63,6 +64,14 @@ const mapDispatchToProps = dispatch => {
         getComments: (id) => dispatch(getComments(id)),
         getError: (msg) => dispatch(getError(msg)),
     }
+}
+
+PostForm.propTypes = {
+    token: PropTypes.string,
+    id: PropTypes.string,
+    name: PropTypes.string,
+    getComments: PropTypes.func,
+    getError: PropTypes.func,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(PostForm)

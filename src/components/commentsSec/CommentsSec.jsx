@@ -4,6 +4,7 @@ import Comment from './comment';
 import './CommentSec.css'
 import PostForm from './PostForm';
 import { useEffect } from 'react';
+import { PropTypes } from 'prop-types';
 
 function CommentsSec(props) {
     const { comments } = props
@@ -44,6 +45,9 @@ const mapStateToProps = state => {
     }
 }
 
+CommentsSec.propTypes = {
+    comments: PropTypes.array,
+}
 
 
 export default connect(mapStateToProps, null)(CommentsSec)

@@ -108,6 +108,9 @@ AnimeList.propTypes = {
   addFav: PropTypes.func,
   getTit: PropTypes.func,
   offset: PropTypes.number,
+  token: PropTypes.string,
+  getComments: PropTypes.func,
+  getError: PropTypes.func,
 };
 
 

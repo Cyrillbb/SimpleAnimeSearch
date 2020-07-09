@@ -79,6 +79,7 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 Header.propTypes = {
+  name: PropTypes.string,
   getPop: PropTypes.func,
   getLcStr: PropTypes.func,
   getCat: PropTypes.func,

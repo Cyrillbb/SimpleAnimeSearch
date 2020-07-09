@@ -7,14 +7,15 @@ import { rootReducer } from './reducers/rootReducer';
 import { Provider } from 'react-redux';
 import logger from 'redux-logger';
 import thunk from 'redux-thunk';
-import Main from './Components/Main';
+import App from './Components/App';
+
 
 const store = createStore(rootReducer, applyMiddleware(logger, thunk));
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-     <Main />
+     <App />
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')

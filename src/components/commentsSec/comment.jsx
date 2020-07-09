@@ -1,5 +1,6 @@
 import React from 'react';
 import './comment.css'
+import { PropTypes } from 'prop-types';
 
 function Comment(props) {
     return (
@@ -9,6 +10,11 @@ function Comment(props) {
             <hr style={{color: 'white', width: '100%'}} />
         </div>
     )
+}
+
+Comment.propTypes = {
+    from: PropTypes.string,
+    body: PropTypes.string,
 }
 
 export default Comment

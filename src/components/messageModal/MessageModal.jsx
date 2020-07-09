@@ -2,6 +2,8 @@ import React from 'react';
 import './MessageModal.css'
 import { getError } from '../../actions/myApiActions';
 import { connect } from 'react-redux';
+import { PropTypes } from 'prop-types';
+
 
 function MessageModal(props) {
     return (
@@ -25,5 +27,10 @@ const mapDispatchToProps = dispatch => {
         setError: (msg) => dispatch(getError(msg)),
     }
 };
+
+MessageModal.propTypes = {
+    error: PropTypes.string,
+    setError: PropTypes.func,
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(MessageModal);

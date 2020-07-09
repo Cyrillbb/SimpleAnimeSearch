@@ -5,6 +5,7 @@ import { getToken, getUserByToken, getError } from '../../actions/myApiActions';
 import { connect } from 'react-redux';
 import './LoginWindow.css'
 import { Link, useHistory } from 'react-router-dom';
+import { PropTypes } from 'prop-types';
 
 function LoginWindow(props) {
     const [name, setName] = useState('');
@@ -61,6 +62,13 @@ const mapDispatchToProps = dispatch => {
         getUserName: (token) => dispatch(getUserByToken(token)),
         getError: (msg) => dispatch(getError(msg))
     }
+}
+
+LoginWindow.propTypes = {
+    getToken: PropTypes.func,
+    getUserName: PropTypes.func,
+    getError: PropTypes.func,
+
 }
 
 export default connect(null, mapDispatchToProps)(LoginWindow)

@@ -8,7 +8,7 @@ import Categories from "./List/Categories";
 import Title from "./Title";
 import { connect } from "react-redux";
 import PropTypes from 'prop-types';
-import "./Main.css";
+import "./App.css";
 import RegWindow from "./auth/RegWindow";
 import { useEffect } from "react";
 import { getToken, getUserByToken, getFavorites } from "../actions/myApiActions";
@@ -16,7 +16,7 @@ import LoginWindow from "./auth/LoginWindow";
 import { useState } from "react";
 import MessageModal from './messageModal/MessageModal';
 
-function Main(props) {
+function App(props) {
   const { getToken, getUserName, getFavs, token, error } = props;
 
   const [errModal, setErrModal] = useState(false);
@@ -94,8 +94,15 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-Main.propTypes = {
-  titleId: PropTypes.string
+App.propTypes = {
+  titleId: PropTypes.string,
+  name: PropTypes.string,
+  favs: PropTypes.array,
+  token: PropTypes.string,
+  error: PropTypes.string,
+  getToken: PropTypes.func,
+  getUserName: PropTypes.func,
+  getFavs: PropTypes.func
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Main);
+export default connect(mapStateToProps, mapDispatchToProps)(App);

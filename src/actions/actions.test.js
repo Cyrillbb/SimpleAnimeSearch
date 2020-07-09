@@ -1,9 +1,9 @@
 import thunk from 'redux-thunk';
-import configureMockStore from 'redux-mock-store'
-import fetchMock from 'fetch-mock'
+import configureMockStore from 'redux-mock-store';
+import fetchMock from 'fetch-mock';
 import { GET_ANIME, getAnime, TOGGLE_FAVORITE, toggleFav, getTitle, GET_TITLE, getCateg, GET_CATEGORIES, getMore, GET_MORE } from './actions';
 import { queryParts } from '../constants';
-import expect from 'expect'
+import expect from 'expect';
 
 
 

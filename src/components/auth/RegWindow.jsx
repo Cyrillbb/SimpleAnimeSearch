@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { myApiEND } from './../../constants';
 import './RegWindow.css'
 import { Link, useHistory } from 'react-router-dom';
+import { PropTypes } from 'prop-types';
 
 
 
@@ -67,6 +68,12 @@ const mapDispatchToProps = dispatch => {
         getError: (msg) => dispatch(getError(msg)),
         getUserName: (token) => dispatch(getUserByToken(token)),
     }
+}
+
+RegWindow.propTypes = {
+    getToken: PropTypes.func,
+    getError: PropTypes.func,
+    getUserName: PropTypes.func,
 }
 
 export default connect(null, mapDispatchToProps)(RegWindow)

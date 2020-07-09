@@ -72,9 +72,11 @@ const mapDispatchToProps = (dispatch) => {
 
 FavoriresList.propTypes = {
   favorites: PropTypes.array,
+  token: PropTypes.string,
   favIds: PropTypes.array,
   toggleFav: PropTypes.func,
   getTit: PropTypes.func,
+  getComments: PropTypes.func,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(FavoriresList);
