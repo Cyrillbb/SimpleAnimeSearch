@@ -9,7 +9,7 @@ function CommentsSec(props) {
     const { comments } = props
     const [counter, setCounter] = useState(5);
     const [reversed, setReversed] = useState([]);
-    
+
     useEffect(() => {
         const clientComments = comments;
         setReversed(clientComments.reverse())
@@ -29,7 +29,10 @@ function CommentsSec(props) {
                 :
                 undefined
             }
-            <button className='commentsSec__btn' onClick={handleShowMore}>Show more comments</button>
+            {reversed.length <= 5 || counter >= reversed.length ? undefined :
+                <button className='commentsSec__btn' onClick={handleShowMore}>Show more comments</button>
+            }
+
             <PostForm />
         </div>
     )
