@@ -4,11 +4,12 @@ import { myApiEND } from './../../constants';
 import { getToken, getUserByToken, getError } from '../../actions/myApiActions';
 import { connect } from 'react-redux';
 import './LoginWindow.css'
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 function LoginWindow(props) {
     const [name, setName] = useState('');
     const [pw, setPw] = useState('');
+    let history = useHistory();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -32,6 +33,7 @@ function LoginWindow(props) {
                 props.getToken(token.token);
                 props.getUserName(token.token);
                 document.cookie = `token=${token.token}`;
+                history.push('/SimpleAnimeSearch')
             }
         }
         catch (err) {

@@ -1,10 +1,10 @@
 import React from 'react';
 import { useState } from 'react';
-import { getToken, getError } from '../../actions/myApiActions';
+import { getToken, getError, getUserByToken } from '../../actions/myApiActions';
 import { connect } from 'react-redux';
 import { myApiEND } from './../../constants';
 import './RegWindow.css'
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 
 
@@ -12,6 +12,7 @@ function RegWindow(props) {
     const [nickname, setNickname] = useState('');
     const [password, setPassword] = useState('');
     const [password2, setPassword2] = useState('');
+    let history = useHistory();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -26,11 +27,13 @@ function RegWindow(props) {
                 })
                 const token = await resp.json();
                 if (!token.token) {
-                    props.getError(token.message)
+                    props.getError(token.message);
                 }
                 else {
-                    props.getToken(token.token)
-                    document.cookie = `token=${token.token}`
+                    props.getToken(token.token);
+                    props.getUserName(token.token)
+                    document.cookie = `token=${token.token}`;
+                    history.push('/SimpleAnimeSearch')
                 }
             }
             catch (err) {
@@ -62,6 +65,7 @@ const mapDispatchToProps = dispatch => {
     return {
         getToken: (token) => dispatch(getToken(token)),
         getError: (msg) => dispatch(getError(msg)),
+        getUserName: (token) => dispatch(getUserByToken(token)),
     }
 }
 
