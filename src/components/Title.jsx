@@ -45,7 +45,7 @@ function Title(props) {
                 {props.favorites.find(i => i.id === props.title.id) === undefined ? (
                   <i
                     className="far fa-star"
-                    style={{ color: "yellow" }}
+                    style={{ color: "yellow", cursor: 'pointer' }}
                     onClick={() => {
                       if (props.token.length === 0) {
                         props.getError('Login to manage favorites');
@@ -58,7 +58,7 @@ function Title(props) {
                 ) : (
                     <i
                       className="fas fa-star"
-                      style={{ color: "yellow" }}
+                      style={{ color: "yellow", cursor: 'pointer' }}
                       onClick={() => {
                         props.addFav(props.title, props.token, props.favorites);
                       }}

@@ -28,7 +28,7 @@ function FavoriresList(props) {
               <td style={{ border: 'solid 1px white', width: '5vw' }}>
                 <i
                   className="fas fa-star"
-                  style={{ color: "yellow" }}
+                  style={{ color: "yellow", cursor: 'pointer' }}
                   onClick={() => {
                     props.addFav(item, props.token, props.favorites)
                   }}

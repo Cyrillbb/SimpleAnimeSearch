@@ -25,7 +25,7 @@ function AnimeList(props) {
                   {props.favs.find(i => i.id === item.id) === undefined ? (
                     <i
                       className="far fa-star"
-                      style={{ color: "yellow" }}
+                      style={{ color: "yellow", cursor: 'pointer' }}
                       onClick={() => {
                         if (props.token.length === 0) {
                           props.getError('Login to manage favourites');
@@ -38,7 +38,7 @@ function AnimeList(props) {
                   ) : (
                       <i
                         className="fas fa-star"
-                        style={{ color: "yellow" }}
+                        style={{ color: "yellow", cursor: 'pointer' }}
                         onClick={() => {
                           props.addFav(item, props.token, props.favs)
                         }}

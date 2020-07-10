@@ -21,13 +21,13 @@ function ButtonBar(props) {
           );
         }, 1000)}
       />
-      <button className="ButtonBar__button" onClick={props.getPop}>
+      <button className="ButtonBar__button" style={{cursor: 'pointer'}} onClick={props.getPop}>
         Most Popular
       </button>
-      <button className="ButtonBar__button" onClick={props.getTop}>
+      <button className="ButtonBar__button" style={{cursor: 'pointer'}} onClick={props.getTop}>
         Top Rated
       </button>
-      <button className="ButtonBar__button" onClick={props.getAir}>
+      <button className="ButtonBar__button" style={{cursor: 'pointer'}} onClick={props.getAir}>
         Top Airing
       </button>
     </div>
