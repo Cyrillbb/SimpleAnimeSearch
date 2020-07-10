@@ -25,7 +25,7 @@ function AnimeList(props) {
                   {props.favs.find(i => i.id === item.id) === undefined ? (
                     <i
                       className="far fa-star"
-                      style={{ color: "yellow", cursor: 'pointer' }}
+                      style={{ color: "yellow", cursor: 'pointer', position: 'absolute', top: '5px', right: '5px' }}
                       onClick={() => {
                         if (props.token.length === 0) {
                           props.getError('Login to manage favourites');
@@ -38,13 +38,18 @@ function AnimeList(props) {
                   ) : (
                       <i
                         className="fas fa-star"
-                        style={{ color: "yellow", cursor: 'pointer' }}
+                        style={{ color: "yellow", cursor: 'pointer', position: 'absolute', top: '5px', right: '5px' }}
                         onClick={() => {
                           props.addFav(item, props.token, props.favs)
                         }}
                       ></i>
                     )}
-                  {item.attributes.canonicalTitle}
+                  <Link to={"/SimpleAnimeSearch/" + item.id}
+                    style={{ textDecoration: 'none', color: 'white' }}
+                    onClick={() => { props.getTit(item.id); props.getComments(item.id) }}
+                  >
+                    {item.attributes.canonicalTitle}
+                  </Link>
                 </h3>
                 <Link to={"/SimpleAnimeSearch/" + item.id}>
                   <img

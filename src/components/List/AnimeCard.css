@@ -16,6 +16,7 @@
     height: 67px;
     padding-top: 15px;
     width: 390px;  
+    position: relative;
 }
 
 @media only screen and (max-width: 600px) { 
