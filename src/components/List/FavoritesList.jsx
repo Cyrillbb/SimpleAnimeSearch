@@ -10,6 +10,7 @@ function FavoriresList(props) {
 
   return (
     <div className="Favs">
+      {props.token.length > 0 ?
       <table style={{ borderCollapse: 'collapse', border: 'solid 1px white' }}>
         <tbody>
           <tr style={{ border: 'solid 1px white' }}>
@@ -50,7 +51,9 @@ function FavoriresList(props) {
             </tr>
           ))}
         </tbody>
-      </table>
+      </table> :
+      <h3 style={{color: 'red'}}>You must login to use favorites section</h3>
+      }
     </div>
   );
 }
