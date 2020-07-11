@@ -16,9 +16,14 @@ function ButtonBar(props) {
         ref={searchRef}
         placeholder="anime search"
         onChange={debounce(() => {
+         if(searchRef.current.value.length > 0) {
           props.getByName(
             queryParts.nameSearch + searchRef.current.value
           );
+         }
+         else {
+           props.getPop();
+         }
         }, 1000)}
       />
       <button className="ButtonBar__button" style={{cursor: 'pointer'}} onClick={props.getPop}>
