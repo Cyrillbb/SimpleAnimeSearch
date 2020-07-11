@@ -3,6 +3,7 @@
     width: 100vw;
     height: 100vh;
     background-color: rgba(32, 64, 93, 0.678);
+    z-index: 15;
 }
 
 .messageModal {
