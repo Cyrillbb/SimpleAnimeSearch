@@ -6,8 +6,7 @@ import PostForm from './PostForm';
 import { useEffect } from 'react';
 import { PropTypes } from 'prop-types';
 
-function CommentsSec(props) {
-    const { comments } = props
+function CommentsSec({ comments }) {    
     const [counter, setCounter] = useState(5);
     const [reversed, setReversed] = useState([]);
 
@@ -17,14 +16,14 @@ function CommentsSec(props) {
     }, [comments])
 
     const handleShowMore = () => {
-        if (counter < props.comments.length) {
+        if (counter < comments.length) {
             setCounter(counter + 5)
         }
     };
 
     return (
         <div className='commenstSec'>
-            {props.comments.length > 0 ?
+            {comments.length > 0 ?
                 reversed.slice(0, counter)
                     .map(i => <Comment key={i._id} from={i.from} body={i.comment} />)
                 :

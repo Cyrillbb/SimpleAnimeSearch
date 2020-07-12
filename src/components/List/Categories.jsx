@@ -7,13 +7,15 @@ import './Categories.css'
 import { PropTypes } from 'prop-types';
 
 function Categories(props) {
+    const { categ, search } = props;
+
     return (
         <div className="Cats">
-            {props.categ.map(item =>
+            {categ.map(item =>
                 <Link className='Cats__link' key={item.id} to='/SimpleAnimeSearch'
-                title={item.attributes.description}
+                    title={item.attributes.description}
                     onClick={
-                        () => props.search(queryParts.categSearch + item.attributes.title + queryParts.mostPop)}>
+                        () => search(queryParts.categSearch + item.attributes.title + queryParts.mostPop)}>
                     {item.attributes.title}</Link>
             )}
         </div>

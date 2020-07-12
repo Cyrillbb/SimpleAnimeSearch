@@ -17,7 +17,7 @@ import { useState } from "react";
 import MessageModal from './messageModal/MessageModal';
 
 function App(props) {
-  const { getToken, getUserName, getFavs, token, error } = props;
+  const { getToken, getUserName, getFavs, token, error, titleId } = props;
 
   const [errModal, setErrModal] = useState(false);
 
@@ -67,7 +67,7 @@ function App(props) {
           <Route exact path="/SimpleAnimeSearch/login">
             <LoginWindow />
           </Route>
-          <Route path={"/SimpleAnimeSearch/" + props.titleId}>
+          <Route path={"/SimpleAnimeSearch/" + titleId}>
             <Title />
           </Route>
         </Switch>

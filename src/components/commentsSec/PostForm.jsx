@@ -1,32 +1,34 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import './PostForm.css'
+import './PostForm.css';
 import { useState } from 'react';
 import { myApiEND } from './../../constants';
 import { getComments, getError } from '../../actions/myApiActions';
 import { PropTypes } from 'prop-types';
 
 function PostForm(props) {
+    const { token, id, name, getComments, getError } = props;
+
     const [comment, setComment] = useState('');
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (props.token.length > 0 && props.name.length > 0) {
+        if (token.length > 0 && name.length > 0) {
             try {
                 fetch(myApiEND + 'comment', {
                     method: 'POST',
                     mode: 'cors',
                     headers: {
-                        'Authorization': `Bearer ${props.token}`,
+                        'Authorization': `Bearer ${token}`,
                         'Content-Type': 'application/json'
                     },
                     body: JSON.stringify({
-                        id: props.id,
+                        id: id,
                         comment: comment,
-                        from: props.name
+                        from: name
                     })
                 }).then(() => {
-                    props.getComments(props.id);
+                    getComments(id);
                     setComment('');
                 })
             }
@@ -35,7 +37,7 @@ function PostForm(props) {
             }
         }
         else {
-            props.getError('Login to post comments');
+            getError('Login to post comments');
         }
     }
 
@@ -57,14 +59,14 @@ const mapStateToProps = state => {
         id: state.title.id,
         name: state.userName
     }
-}
+};
 
 const mapDispatchToProps = dispatch => {
     return {
         getComments: (id) => dispatch(getComments(id)),
         getError: (msg) => dispatch(getError(msg)),
     }
-}
+};
 
 PostForm.propTypes = {
     token: PropTypes.string,
@@ -72,6 +74,6 @@ PostForm.propTypes = {
     name: PropTypes.string,
     getComments: PropTypes.func,
     getError: PropTypes.func,
-}
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(PostForm)

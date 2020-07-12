@@ -9,7 +9,7 @@ import { PropTypes } from 'prop-types';
 
 
 
-function RegWindow(props) {
+function RegWindow({ getToken, getError, getUserName }) {
     const [nickname, setNickname] = useState('');
     const [password, setPassword] = useState('');
     const [password2, setPassword2] = useState('');
@@ -28,11 +28,11 @@ function RegWindow(props) {
                 })
                 const token = await resp.json();
                 if (!token.token) {
-                    props.getError(token.message);
+                    getError(token.message);
                 }
                 else {
-                    props.getToken(token.token);
-                    props.getUserName(token.token)
+                    getToken(token.token);
+                    getUserName(token.token)
                     document.cookie = `token=${token.token}; path=/SimpleAnimeSearch`;
                     history.push('/SimpleAnimeSearch')
                 }
@@ -41,8 +41,8 @@ function RegWindow(props) {
                 console.log(new Error(err));
             }
         }
-        else if(password !== password2) {
-            props.getError('password entries should match');
+        else if (password !== password2) {
+            getError('password entries should match');
         }
     }
 
@@ -54,7 +54,7 @@ function RegWindow(props) {
                 <label htmlFor="password">Enter your password</label>
                 <input className='RegWindow__input' type="password" placeholder='password...' id='password' onChange={e => setPassword(e.target.value)} required />
                 <label htmlFor="password2">Repeat your password</label>
-                <input className='RegWindow__input' type="password" placeholder='repeat password...' id='password2' onChange={e => setPassword2(e.target.value)} required />             
+                <input className='RegWindow__input' type="password" placeholder='repeat password...' id='password2' onChange={e => setPassword2(e.target.value)} required />
                 <button className='RegWindow__button' type='submit'>Submit</button>
                 <Link to='/SimpleAnimeSearch/login' className='RegWindow__button'>Back</Link>
             </form>

@@ -6,7 +6,7 @@ import { debounce } from "./../../utility";
 import "./ButtonBar.css";
 import { PropTypes } from "prop-types";
 
-function ButtonBar(props) {
+function ButtonBar({ getPop, getTop, getAir, getByName }) {
   const searchRef = useRef(null);
   return (
     <div className="ButtonBar" id="btnBar">
@@ -16,23 +16,23 @@ function ButtonBar(props) {
         ref={searchRef}
         placeholder="anime search"
         onChange={debounce(() => {
-         if(searchRef.current.value.length > 0) {
-          props.getByName(
-            queryParts.nameSearch + searchRef.current.value
-          );
-         }
-         else {
-           props.getPop();
-         }
+          if (searchRef.current.value.length > 0) {
+            getByName(
+              queryParts.nameSearch + searchRef.current.value
+            );
+          }
+          else {
+            getPop();
+          }
         }, 1000)}
       />
-      <button className="ButtonBar__button" style={{cursor: 'pointer'}} onClick={props.getPop}>
+      <button className="ButtonBar__button" style={{ cursor: 'pointer' }} onClick={getPop}>
         Most Popular
       </button>
-      <button className="ButtonBar__button" style={{cursor: 'pointer'}} onClick={props.getTop}>
+      <button className="ButtonBar__button" style={{ cursor: 'pointer' }} onClick={getTop}>
         Top Rated
       </button>
-      <button className="ButtonBar__button" style={{cursor: 'pointer'}} onClick={props.getAir}>
+      <button className="ButtonBar__button" style={{ cursor: 'pointer' }} onClick={getAir}>
         Top Airing
       </button>
     </div>

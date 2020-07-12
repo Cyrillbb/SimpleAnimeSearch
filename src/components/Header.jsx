@@ -10,12 +10,14 @@ import { useState } from "react";
 import Dropdown from "./dropDown";
 
 function Header(props) {
+  const { name, getPop, getCat } = props;
+
   const [showDropDown, setDropDown] = useState(false)
 
   useEffect(() => {
-    props.getPop();
-    props.getCat();
-  }, [props]);
+    getPop();
+    getCat();
+  }, [getPop, getCat]);
 
   const navRef = useRef(null);
 
@@ -39,12 +41,12 @@ function Header(props) {
       <h3 className="header__h3">
         Simple Anime Search
         <i className="fas fa-bars" id="bars" onClick={handleHide}></i>
-        {props.name.length === 0 ?
+        {name.length === 0 ?
           <Link to='/SimpleAnimeSearch/login' className='header__Link'>
             <span className='heder__Link__txt'>Login</span>
           </Link> :
           <button className='header__Link' onClick={handleDropDown}>
-            <span className='heder__Link__txt'>{props.name}</span>
+            <span className='heder__Link__txt'>{name}</span>
             <i className="fas fa-angle-down" style={{ margin: '5px' }}></i>
             {showDropDown ? <Dropdown /> : undefined}
           </button>}
@@ -73,7 +75,6 @@ const mapStateToProps = state => {
 const mapDispatchToProps = (dispatch) => {
   return {
     getPop: () => dispatch(getAnime(queryParts.mostPop)),
-    getLcStr: () => dispatch(getLocalStr()),
     getCat: () => dispatch(getCateg()),
   };
 };

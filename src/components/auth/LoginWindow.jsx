@@ -7,7 +7,7 @@ import './LoginWindow.css'
 import { Link, useHistory } from 'react-router-dom';
 import { PropTypes } from 'prop-types';
 
-function LoginWindow(props) {
+function LoginWindow({ getToken, getUserName, getError }) {
     const [name, setName] = useState('');
     const [pw, setPw] = useState('');
     let history = useHistory();
@@ -28,11 +28,11 @@ function LoginWindow(props) {
             })
             const token = await resp.json();
             if (!token.token) {
-                props.getError(token.message);
+                getError(token.message);
             }
             else {
-                props.getToken(token.token);
-                props.getUserName(token.token);
+                getToken(token.token);
+                getUserName(token.token);
                 document.cookie = `token=${token.token}; path=/SimpleAnimeSearch`;
                 history.push('/SimpleAnimeSearch')
             }

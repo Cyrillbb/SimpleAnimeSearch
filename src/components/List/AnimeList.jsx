@@ -10,28 +10,30 @@ import { getComments, getError } from "../../actions/myApiActions";
 
 
 function AnimeList(props) {
+  const { results, url, favs, pending, more, offset, token, getMoreRes, addFav, getTit, getComments, getError } = props;
+
   return (
     <div style={{ backgroundColor: "#001f3f" }}>
       <div className="AnimeList">
-        {props.pending ? (
+        {pending ? (
           <div
             className="loader"
             style={{ margin: "auto", marginTop: "150px" }}
           ></div>
         ) : (
-            props.results.map((item) => (
+            results.map((item) => (
               <AnimeCard key={item.id} id={item.id}>
                 <h3 className="AnimeCard__h3">
-                  {props.favs.find(i => i.id === item.id) === undefined ? (
+                  {favs.find(i => i.id === item.id) === undefined ? (
                     <i
                       className="far fa-star"
                       style={{ color: "yellow", cursor: 'pointer', position: 'absolute', top: '5px', right: '5px' }}
                       onClick={() => {
-                        if (props.token.length === 0) {
-                          props.getError('Login to manage favourites');
+                        if (token.length === 0) {
+                          getError('Login to manage favourites');
                         }
                         else {
-                          props.addFav(item, props.token, props.favs);
+                          addFav(item, token, favs);
                         }
                       }}
                     ></i>
@@ -40,13 +42,13 @@ function AnimeList(props) {
                         className="fas fa-star"
                         style={{ color: "yellow", cursor: 'pointer', position: 'absolute', top: '5px', right: '5px' }}
                         onClick={() => {
-                          props.addFav(item, props.token, props.favs)
+                          addFav(item, token, favs)
                         }}
                       ></i>
                     )}
                   <Link to={"/SimpleAnimeSearch/" + item.id}
                     style={{ textDecoration: 'none', color: 'white' }}
-                    onClick={() => { props.getTit(item.id); props.getComments(item.id) }}
+                    onClick={() => { getTit(item.id); getComments(item.id) }}
                   >
                     {item.attributes.canonicalTitle}
                   </Link>
@@ -54,7 +56,7 @@ function AnimeList(props) {
                 <Link to={"/SimpleAnimeSearch/" + item.id}>
                   <img
                     className="img"
-                    onClick={() => { props.getTit(item.id); props.getComments(item.id) }}
+                    onClick={() => { getTit(item.id); getComments(item.id) }}
                     src={item.attributes.posterImage.medium}
                     alt=""
                   />
@@ -63,14 +65,14 @@ function AnimeList(props) {
             ))
           )}
       </div>
-      {props.more ? (
+      {more ? (
         <div className="loader" style={{ margin: "auto" }}></div>
       ) : (
           <button
             className="AnimeList__btn"
             style={{ marginTop: "150px" }}
             onClick={() => {
-              props.getMoreRes(props.url, props.offset);
+              getMoreRes(url, offset);
             }}
           >
             Show More
