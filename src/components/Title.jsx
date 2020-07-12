@@ -9,7 +9,7 @@ import { getComments, getError } from "../actions/myApiActions";
 import CommentsSec from "./commentsSec/CommentsSec";
 
 function Title(props) {
-  const { title, favorites, pending, titleId, comments, token, addFav, getTit, getComments, getError } = props;
+  const { title, favorites, pending, titleId, token, addFav, getTit, getComments, getError } = props;
 
   const [trailer, setTrailer] = useState(false)
   useEffect(() => {
@@ -18,7 +18,7 @@ function Title(props) {
       getTit(id);
       getComments(id);
     }
-  }, [getTit, getComments]);
+  }, [getTit, getComments, titleId]);
 
   const handleWatch = () => {
     setTrailer(true)

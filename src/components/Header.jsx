@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { useEffect } from "react";
-import { getAnime, getLocalStr, getCateg } from "./../actions/actions";
+import { getAnime, getCateg } from "./../actions/actions";
 import { queryParts } from "./../constants";
 import "./Header.css";
 import { PropTypes } from "prop-types";
