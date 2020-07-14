@@ -104,5 +104,7 @@
     }
     .header__Link {
         right: 30px;
+        font-size: medium;
+        height: 25px;
     }
 }
