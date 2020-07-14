@@ -28,6 +28,7 @@ export const fetcher = (state = initialState, action) => {
                     loadedData: state.loadedData.concat(action.payload.data),
                     pendingMore: action.payload.pendingMore,
                     offset: action.payload.offset,
+                    searchName: state.searchName
                 }
             )
         default:
