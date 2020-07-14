@@ -9,7 +9,7 @@ export const GET_ANIME = 'GET_ANIME';
 export const GET_TITLE = 'GET_TITLE';
 export const GET_LOCAL_STR = 'GET_LOCAL_STR';
 
-export const getAnime = (query) => {
+export const getAnime = (query, searchName) => {
     const url = queryParts.apiURL + query + apiEND;
     return async dispatch => {
         dispatch({
@@ -17,7 +17,7 @@ export const getAnime = (query) => {
             payload: {
                 data: [],
                 url: '',
-                pending: true
+                pending: true,                
             }
         })
         try {
@@ -30,6 +30,7 @@ export const getAnime = (query) => {
                     url: url,
                     pending: false,
                     offset: queryParts.resultsNum,
+                    searchName
                 }
             })
         }

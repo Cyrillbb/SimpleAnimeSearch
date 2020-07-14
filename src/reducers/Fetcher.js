@@ -18,6 +18,7 @@ export const fetcher = (state = initialState, action) => {
                     loadedData: action.payload.data,
                     pending: action.payload.pending,
                     offset: action.payload.offset,
+                    searchName: action.payload.searchName,
                 }
             )
         case (GET_MORE):

@@ -15,6 +15,7 @@ import { getToken, getUserByToken, getFavorites } from "../actions/myApiActions"
 import LoginWindow from "./auth/LoginWindow";
 import { useState } from "react";
 import MessageModal from './messageModal/MessageModal';
+import CurrentResults from "./currentResults/CurrentResults";
 
 function App(props) {
   const { getToken, getUserName, getFavs, token, error, titleId } = props;
@@ -53,6 +54,7 @@ function App(props) {
         <Switch>
           <Route exact path="/SimpleAnimeSearch">
             <ButtonBar />
+            <CurrentResults />
             <AnimeList />
           </Route>
           <Route exact path="/SimpleAnimeSearch/favorites">

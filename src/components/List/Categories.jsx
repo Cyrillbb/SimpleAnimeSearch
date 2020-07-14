@@ -15,7 +15,7 @@ function Categories(props) {
                 <Link className='Cats__link' key={item.id} to='/SimpleAnimeSearch'
                     title={item.attributes.description}
                     onClick={
-                        () => search(queryParts.categSearch + item.attributes.title + queryParts.mostPop)}>
+                        () => search(queryParts.categSearch + item.attributes.title + queryParts.mostPop, `${item.attributes.title}`)}>
                     {item.attributes.title}</Link>
             )}
         </div>
@@ -30,7 +30,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        search: (catName) => dispatch(getAnime(catName))
+        search: (catName, searchName) => dispatch(getAnime(catName, searchName))
     }
 }
 

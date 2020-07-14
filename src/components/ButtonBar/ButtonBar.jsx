@@ -18,7 +18,7 @@ function ButtonBar({ getPop, getTop, getAir, getByName }) {
         onChange={debounce(() => {
           if (searchRef.current.value.length > 0) {
             getByName(
-              queryParts.nameSearch + searchRef.current.value
+              queryParts.nameSearch + searchRef.current.value, `${searchRef.current.value}`
             );
           }
           else {
@@ -41,10 +41,10 @@ function ButtonBar({ getPop, getTop, getAir, getByName }) {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getPop: () => dispatch(getAnime(queryParts.mostPop)),
-    getTop: () => dispatch(getAnime(queryParts.topRated)),
-    getAir: () => dispatch(getAnime(queryParts.topAir)),
-    getByName: (name) => dispatch(getAnime(name)),
+    getPop: () => dispatch(getAnime(queryParts.mostPop, 'Most Popular')),
+    getTop: () => dispatch(getAnime(queryParts.topRated, 'Top rated')),
+    getAir: () => dispatch(getAnime(queryParts.topAir, 'Top Airing')),
+    getByName: (name, searchName) => dispatch(getAnime(name, searchName)),
   };
 };
 

@@ -74,7 +74,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getPop: () => dispatch(getAnime(queryParts.mostPop)),
+    getPop: () => dispatch(getAnime(queryParts.mostPop, 'Most Popular')),
     getCat: () => dispatch(getCateg()),
   };
 };
