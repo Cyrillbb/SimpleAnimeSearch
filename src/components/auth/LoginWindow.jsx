@@ -33,8 +33,8 @@ function LoginWindow({ getToken, getUserName, getError }) {
             else {
                 getToken(token.token);
                 getUserName(token.token);
-                document.cookie = `token=${token.token}; path=/SimpleAnimeSearch`;
-                history.push('/SimpleAnimeSearch')
+                document.cookie = `token=${token.token}; path=/`;
+                history.push('/')
             }
         }
         catch (err) {
@@ -50,7 +50,7 @@ function LoginWindow({ getToken, getUserName, getError }) {
                 <label htmlFor="loginPw">Enter your password</label>
                 <input className='LogForm__input' type="password" id='loginPw' placeholder='password...' onChange={e => setPw(e.target.value)} required />
                 <button type='submit' className='LogForm__btn'>Login</button>
-                <Link to='/SimpleAnimeSearch/registration' className='LogForm__btn'> Create account</Link>
+                <Link to='/registration' className='LogForm__btn'> Create account</Link>
             </form>
         </div>
     )

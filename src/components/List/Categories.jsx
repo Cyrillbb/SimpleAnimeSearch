@@ -12,7 +12,7 @@ function Categories(props) {
     return (
         <div className="Cats">
             {categ.map(item =>
-                <Link className='Cats__link' key={item.id} to='/SimpleAnimeSearch'
+                <Link className='Cats__link' key={item.id} to='/'
                     title={item.attributes.description}
                     onClick={
                         () => search(queryParts.categSearch + item.attributes.title + queryParts.mostPop, `${item.attributes.title}`)}>

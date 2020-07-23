@@ -42,7 +42,7 @@ function Header(props) {
         Simple Anime Search
         <i className="fas fa-bars" id="bars" onClick={handleHide}></i>
         {name.length === 0 ?
-          <Link to='/SimpleAnimeSearch/login' className='header__Link'>
+          <Link to='/login' className='header__Link'>
             <span className='heder__Link__txt'>Login</span>
           </Link> :
           <button className='header__Link' onClick={handleDropDown}>
@@ -52,13 +52,13 @@ function Header(props) {
           </button>}
       </h3>
       <nav className="header__nav" id="nav" ref={navRef}>
-        <Link className="header__nav__Link" to="/SimpleAnimeSearch">
+        <Link className="header__nav__Link" to="/">
           Discover Anime
         </Link>
-        <Link className="header__nav__Link" to="/SimpleAnimeSearch/categories">
+        <Link className="header__nav__Link" to="/categories">
           Browse popular categories
         </Link>
-        <Link className="header__nav__Link" to="/SimpleAnimeSearch/favorites">
+        <Link className="header__nav__Link" to="/favorites">
           Favorites
         </Link>
       </nav>

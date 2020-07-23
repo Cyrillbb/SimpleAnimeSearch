@@ -30,7 +30,7 @@ function Title(props) {
 
   return (
     <div className="TitleBox">
-      {pending ? (
+      {pending || !title ? (
         <div
           className="loader"
           style={{ margin: "auto", marginTop: "150px" }}

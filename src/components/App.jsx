@@ -52,24 +52,24 @@ function App(props) {
         <Header />
         {errModal ? <MessageModal /> : undefined}
         <Switch>
-          <Route exact path="/SimpleAnimeSearch">
+          <Route exact path="/">
             <ButtonBar />
             <CurrentResults />
             <AnimeList />
           </Route>
-          <Route exact path="/SimpleAnimeSearch/favorites">
+          <Route exact path="/favorites">
             <FavoritesList />
           </Route>
-          <Route exact path="/SimpleAnimeSearch/categories">
+          <Route exact path="/categories">
             <Categories />
           </Route>
-          <Route exact path="/SimpleAnimeSearch/registration">
+          <Route exact path="/registration">
             <RegWindow />
           </Route>
-          <Route exact path="/SimpleAnimeSearch/login">
+          <Route exact path="/login">
             <LoginWindow />
           </Route>
-          <Route path={"/SimpleAnimeSearch/" + titleId}>
+          <Route path={"/" + titleId}>
             <Title />
           </Route>
         </Switch>

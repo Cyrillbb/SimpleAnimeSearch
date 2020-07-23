@@ -46,14 +46,14 @@ function AnimeList(props) {
                         }}
                       ></i>
                     )}
-                  <Link to={"/SimpleAnimeSearch/" + item.id}
+                  <Link to={"/" + item.id}
                     style={{ textDecoration: 'none', color: 'white' }}
                     onClick={() => { getTit(item.id); getComments(item.id) }}
                   >
                     {item.attributes.canonicalTitle}
                   </Link>
                 </h3>
-                <Link to={"/SimpleAnimeSearch/" + item.id}>
+                <Link to={"/" + item.id}>
                   <img
                     className="img"
                     onClick={() => { getTit(item.id); getComments(item.id) }}
