@@ -30,7 +30,7 @@ function AnimeList(props) {
                       style={{ color: "yellow", cursor: 'pointer', position: 'absolute', top: '5px', right: '5px' }}
                       onClick={() => {
                         if (token.length === 0) {
-                          getError('Login to manage favourites');
+                          getError('Login to manage favorites');
                         }
                         else {
                           addFav(item, token, favs);
@@ -46,14 +46,14 @@ function AnimeList(props) {
                         }}
                       ></i>
                     )}
-                  <Link to={"/" + item.id}
+                  <Link to={"/SimpleAnimeSearch/" + item.id}
                     style={{ textDecoration: 'none', color: 'white' }}
                     onClick={() => { getTit(item.id); getComments(item.id) }}
                   >
                     {item.attributes.canonicalTitle}
                   </Link>
                 </h3>
-                <Link to={"/" + item.id}>
+                <Link to={"/SimpleAnimeSearch/" + item.id}>
                   <img
                     className="img"
                     onClick={() => { getTit(item.id); getComments(item.id) }}

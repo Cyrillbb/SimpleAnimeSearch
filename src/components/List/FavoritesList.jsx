@@ -39,7 +39,7 @@ function FavoriresList(props) {
                 <td style={{ border: 'solid 1px white', width: '50vw' }}>
                   <Link
                     className="Favs__card__link"
-                    to={"/" + item.id}
+                    to={"/SimpleAnimeSearch/" + item.id}
                   >
                     <h3 className="cardH" onClick={() => { getTit(item.id); getComments(item.id) }}>
                       {item.attributes.canonicalTitle}
