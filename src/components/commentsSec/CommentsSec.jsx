@@ -25,7 +25,7 @@ function CommentsSec({ comments }) {
         <div className='commenstSec'>
             {comments.length > 0 ?
                 reversed.slice(0, counter)
-                    .map(i => <Comment key={i._id} from={i.from} body={i.comment} />)
+                    .map(i => <Comment key={i._id} from={i.from} body={i.comment} date={i.date} />)
                 :
                 undefined
             }

@@ -15,9 +15,9 @@ export const queryParts = {
     youtFilter: ',youtubeVideoId'
 };
 
-//export const myApiEND = 'http://localhost:5000/';
+export const myApiEND = 'http://localhost:5000/';
 
-export const myApiEND = 'https://simple-anime-searcher.herokuapp.com/';
+//export const myApiEND = 'https://simple-anime-searcher.herokuapp.com/';
 
 export const apiEND = queryParts.pageLim + queryParts.resultsNum + queryParts.filter;
 
