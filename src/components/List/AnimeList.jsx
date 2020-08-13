@@ -56,6 +56,7 @@ function AnimeList(props) {
                 <Link to={"/SimpleAnimeSearch/" + item.id}>
                   <img
                     className="img"
+                    loading="lazy"
                     onClick={() => { getTit(item.id); getComments(item.id) }}
                     src={item.attributes.posterImage.medium}
                     alt=""
